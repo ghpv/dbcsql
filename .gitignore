@@ -1,0 +1,4 @@
+/contract.dsl
+.flattened-pom.xml
+shade/
+*/deploy/*

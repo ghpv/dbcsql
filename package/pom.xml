@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ee.taltech.dbcsql</groupId>
+	<artifactId>dbcsql-package</artifactId>
+
+	<name>dbcsql: Package</name>
+
+	<parent>
+		<groupId>ee.taltech.dbcsql</groupId>
+		<artifactId>main-pom</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<packaging>pom</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>ee.taltech.dbcsql.iface</groupId>
+			<artifactId>cli</artifactId>
+			<classifier>jar-with-dependencies</classifier>
+		</dependency>
+		<dependency>
+			<groupId>ee.taltech.dbcsql.iface</groupId>
+			<artifactId>gui</artifactId>
+			<classifier>jar-with-dependencies</classifier>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>prepare</id>
+						<phase>validate</phase>
+						<configuration>
+							<tasks>
+								<unzip src="./files/OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.zip" dest="target/linux_jdk"/>
+								<unzip src="./files/OpenJDK17U-jdk_x64_windows_hotspot_17.0.6_10.zip" dest="target/windows_jdk"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>create-distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

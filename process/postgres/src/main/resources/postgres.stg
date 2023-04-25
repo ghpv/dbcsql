@@ -1,0 +1,94 @@
+delimiters "$", "$"
+
+func(d) ::= <<
+CREATE OR REPLACE FUNCTION $d.name$
+(
+	$d.args;separator=",\n"$
+)
+RETURNS $d.returnType$
+LANGUAGE SQL SECURITY $if(d.securityInvoker)$INVOKER$else$DEFINER$endif$
+SET SEARCH_PATH TO $d.searchSpace.values:{x |'$x$'};separator=", "$
+BEGIN ATOMIC
+	$d.statements;separator="\n"$
+END;>>
+
+deleted(d) ::= <<
+DELETE FROM
+	$d.table$
+$if(d.using)$
+USING
+	$d.using.values;separator=",\n"$
+$endif$
+$if(d.where)$
+WHERE
+	$d.where.node$
+$endif$
+$if(d.returnValue)$
+RETURNING
+	$d.returnValue.symbolValue$
+$endif$
+;>>
+
+inserted(d) ::= <<
+INSERT INTO
+	$d.table$
+(
+	$d.columns;separator=",\n"$
+)
+$if(d.relatedTables)$
+SELECT
+	$d.values;separator=",\n"$
+FROM
+	$d.relatedTables.values;separator=",\n"$
+WHERE
+	$d.where.node$
+$else$
+VALUES
+(
+	$d.values;separator=",\n"$
+)
+$endif$
+$if(d.returnValue)$
+RETURNING
+	$d.returnValue.symbolValue$
+$endif$
+;>>
+
+updated(d) ::= <<
+UPDATE
+	$d.table$
+SET
+	$d.lines;separator=",\n"$
+$if(d.relatedTables)$
+FROM
+	$d.relatedTables.values;separator=",\n"$
+$endif$
+$if(d.where)$
+WHERE
+	$d.where.node$
+$endif$
+$if(d.returnValue)$
+RETURNING
+	$d.returnValue.symbolValue$
+$endif$
+;>>
+
+wn_composite(d) ::= <<
+(
+	$d.nodes; separator=d.operation:{x | $\n$$x$ } $
+)
+>>
+
+wn_comparison(d) ::= <<
+$d.column$ $d.type$ $d.targets$
+>>
+
+wn_unary(d) ::= <<
+$if (d.negate)$
+NOT (
+	$d.node$
+)
+$else$
+$d.node$
+$endif$
+>>

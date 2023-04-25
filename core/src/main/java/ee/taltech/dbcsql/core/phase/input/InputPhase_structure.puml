@@ -1,0 +1,1704 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "ee.taltech.dbcsql.core.phase.input.InputPhase",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1543431499 { 
+   	label=taltech
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1959173790 { 
+   	label=dbcsql
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AliasedName1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AliasedName</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   dbName: DBName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dslName: DSLName [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ compareTo(other: AliasedName): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentComparisonTargetVisitor1268088010[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentComparisonTargetVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   possibleType: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(v: CompositeComparisonTargetNode): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: LiteralComparisonTargetNode): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: FunctionComparisonTargetNode): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >- visitSubnodes(nodes: Collection&lt;ComparisonTargetNode&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentDef1798038948[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentPostconditionVisitor1268088010[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentPostconditionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- resolveFromColumnEquality(equalColumns: Collection&lt;ColumnEquality&gt;): ArgumentPostconditionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentPreconditionVisitor1268088010[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentPreconditionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(c: ExistsPrecondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: ConnectionPrecondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentResolver1268088010[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentResolver</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   argRef: Map&lt;String, ArgumentDef&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addArgumentReference(arg: ArgumentDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(eq: ColumnEquality): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(expr: ComparisonExpressionNode): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(targettedColumn: ColumnDef, values: Collection&lt;ComparisonTargetNode&gt;): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, compTarget: ComparisonTargetNode): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argumentStr: String): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argument: ArgumentDef): ArgumentResolver</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ArgumentRestrictionVisitor1268088010[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArgumentRestrictionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(r: ConnectionRestriction): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ExpressionRestriction): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ColumnDef1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ColumnDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: AliasedName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: TableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clone(): ColumnDef</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ColumnEquality1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ColumnEquality</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CombinedPersistence1224684278[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CombinedPersistence</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   persistences: List&lt;Persistence&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addPersistence(p: Persistence)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finished(): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startNew(contractName: String): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(s: String): Persistence</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CommonTranslation600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CommonTranslation</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ translateColumnName(owner: VariableDef, column: ColumnDef): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ translateColumnName(owner: VariableDef, columnName: AliasedName): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ translateColumnName(owner: VariableDef, column: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ translateTableName(table: TableDef): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ translateVariableForDeclaration(var: VariableDef): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ComparisonExpressionNode304664616[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ComparisonExpressionNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   column: AliasedName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   columnOwner: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   targets: List&lt;ComparisonTargetNode&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: ComparisonType [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: RestrictionExpressionNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTarget(target: ComparisonTargetNode)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): ComparisonExpressionNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ComparisonExpressionNodeSubBuilder1635554853[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ComparisonExpressionNodeSubBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   owner: BuilderT [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): BuilderT</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ComparisonTargetNodeCompositor864757147[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ComparisonTargetNodeCompositor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   target: CompositeComparisonTargetNode [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(node: CompositeComparisonTargetNode): CompositeComparisonTargetNode</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(node: LiteralComparisonTargetNode): CompositeComparisonTargetNode</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(node: FunctionComparisonTargetNode): CompositeComparisonTargetNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ComparisonTargetNodePreprocessorVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ComparisonTargetNodePreprocessorVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- processSubnodes(nodes: Collection&lt;ComparisonTargetNode&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: CompositeComparisonTargetNode): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: LiteralComparisonTargetNode): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: FunctionComparisonTargetNode): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ComparisonTargetNodeStringifierVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ComparisonTargetNodeStringifierVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- joinSubnodes(nodes: Collection&lt;ComparisonTargetNode&gt;, delimiter: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: CompositeComparisonTargetNode): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: LiteralComparisonTargetNode): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(v: FunctionComparisonTargetNode): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompositeComparisonTargetNode1205659124[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompositeComparisonTargetNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: ComparisonTargetNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): CompositeComparisonTargetNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompositeExpressionNode1362686328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompositeExpressionNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: RestrictionExpressionNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): CompositeExpressionNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompositeNode29133328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompositeNode&lt;NodeType, CompositionEnum&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nodes: List&lt;NodeType&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   operation: CompositionEnum [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addNode(node: NodeType)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendWith(cb: CompositeNode&lt;NodeType, CompositionEnum&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendWith(nodes: Collection&lt;NodeType&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConditionToRestrictionTranslator600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConditionToRestrictionTranslator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   db: DatabaseDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   reg: RestrictionRegistry [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># addConnectionKeyColumnLinkToComposite(builder: CompositeExpressionNodeSubBuilder, fkeyA: VariableDef, fkeyB: VariableDef, conn: ConnectedColumns)</TD></TR>
+<TR><TD ALIGN="LEFT" ># addConnectionKeyColumnLinks(a: VariableDef, b: VariableDef, names: List&lt;String&gt;): ConditionToRestrictionTranslator</TD></TR>
+<TR><TD ALIGN="LEFT" ># addConnectionVariableRestrictions(a: VariableDef, b: VariableDef, names: List&lt;String&gt;, newValue: boolean, unlink: boolean): ConditionToRestrictionTranslator</TD></TR>
+<TR><TD ALIGN="LEFT" >- getRelevantFromConnection(a: VariableDef, b: VariableDef, col: ColumnDef): VariableDef</TD></TR>
+<TR><TD ALIGN="LEFT" ># isIgnored(a: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># linkVariables(a: VariableDef, b: VariableDef, names: List&lt;String&gt;, newValue: boolean, unlink: boolean)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectedColumns1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectedColumns</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># compare(a: ColumnDef, b: ColumnDef): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getOneBelongingTo(table: TableDef): ColumnDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getOneNotBelongingTo(table: TableDef): ColumnDef</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectedStrings1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectedStrings</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># compare(a: String, b: String): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectedTables1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectedTables</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># compare(a: TableDef, b: TableDef): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectedValues1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectedValues&lt;T&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   a: T [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b: T [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># compare(a: T, b: T): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- swapNames()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectionDetails1100076625[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectionDetails</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   connectionUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   database: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   host: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   password: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   port: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   username: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- buildConnectionUrl(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectionPrecondition1962707792[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectionPrecondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   a: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   names: List&lt;String&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: PreconditionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addName(name: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ConnectionRestriction1950000921[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ConnectionRestriction</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   a: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   names: List&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   newLink: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   unlink: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: RestrictionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ canBeCombined(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): ConnectionRestriction</TD></TR>
+<TR><TD ALIGN="LEFT" >+ combineWith(other: Restriction): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ contains(v: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getOther(v: VariableDef): VariableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setNewLink(val: boolean): ConnectionRestriction</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ContractDef1239972057[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ContractDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   arguments: List&lt;ArgumentDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   postconditions: List&lt;PostconditionDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   preconditions: List&lt;PreconditionDef&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addArgument(argument: ArgumentDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addPostcondition(condition: PostconditionDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addPrecondition(condition: PreconditionDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resolveArgumentTypes()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DBCommands1100076625[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DBCommands</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   driver: DBDriver [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(query: String, args: Object...): DBCommands</TD></TR>
+<TR><TD ALIGN="LEFT" >+ executeUpdate(query: String, args: Object...): DBCommands</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readDb(): DatabaseDef</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DBDriver1100076625[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DBDriver</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   conn: Connection [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   defaultConnectionDetails: ConnectionDetails [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ close()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ connection(): Connection</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(query: String, args: Object...): DBDriver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ executeUpdate(query: String, args: Object...): DBDriver</TD></TR>
+<TR><TD ALIGN="LEFT" ># implementationDriverName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadDriver()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ newConnection(): Connection</TD></TR>
+<TR><TD ALIGN="LEFT" >+ newConnection(details: ConnectionDetails): Connection</TD></TR>
+<TR><TD ALIGN="LEFT" >+ prepareStatement(query: String, args: Object...): PreparedStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readDb(): DatabaseDef</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DBName1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DBName</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   schema: Optional&lt;String&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DSLName1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DSLName</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DatabaseDef1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DatabaseDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   connectionKeyCache: Map&lt;String, Set&lt;String&gt;&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   connections: Map&lt;ConnectedStrings, Map&lt;String, FKey&gt;&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nameMap: Map&lt;DBName, DSLName&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tables: Map&lt;DSLName, TableDef&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addConnection(connection: FKey): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addConnections(connections: Collection&lt;FKey&gt;): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >- addOneWayKeyConnection(a: String, b: String): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTable(table: TableDef): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTables(tables: Collection&lt;TableDef&gt;): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >- connectionKey(n: DBName): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- findPath(a: DBName, b: DBName): List&lt;ConnectedStrings&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: TableDef, b: TableDef): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: TableDef, b: TableDef, name: String): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: TableDef, b: TableDef, names: List&lt;String&gt;): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: String, b: String, names: String...): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: DBName, b: DBName, names: String...): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: DBName, b: DBName, names: List&lt;String&gt;): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getConnection(a: DBName, b: DBName, names: Queue&lt;String&gt;): List&lt;FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getConnectionKey(a: TableDef, b: TableDef): ConnectedStrings</TD></TR>
+<TR><TD ALIGN="LEFT" >- getConnectionKey(a: DBName, b: DBName): ConnectedStrings</TD></TR>
+<TR><TD ALIGN="LEFT" >- getConnectionKey(a: String, b: String): ConnectedStrings</TD></TR>
+<TR><TD ALIGN="LEFT" >- getConnectionMap(key: ConnectedStrings): Map&lt;String, FKey&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getFirstConnection(key: ConnectedStrings): FKey</TD></TR>
+<TR><TD ALIGN="LEFT" >- getNamedConnection(key: ConnectedStrings, name: String): FKey</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTable(dslName: DSLName): TableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTable(dbName: DBName): TableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTableDB(name: String): TableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTableDSL(name: String): TableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >- tableName(a: TableDef): DBName</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DatabasePersistence1224684278[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DatabasePersistence</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   driver: DBDriver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   memory: MemoryPersistence [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ finished(): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startNew(contractName: String): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startNew(): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(s: String): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >- writeToDB()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeleteStatement2106219809[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeleteStatement</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   returnValue: ReturnValue [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   using: UniqueValues [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClause [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: StatementVisitor&lt;T&gt;): T</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeleteStatementBuilder2106219809[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeleteStatementBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): DeleteStatement</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeleteStatementBuilderBase2106219809[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeleteStatementBuilderBase&lt;BuilderT extends DeleteStatementBuilderBase&lt;BuilderT&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: DeleteStatement [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ from(table: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ using(): UsingClauseBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ where(): WhereClauseBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeletedPostcondition1085469746[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeletedPostcondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   returnValue: Optional&lt;ReturnValue&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: PostconditionVisitor&lt;T&gt;): T</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeletedRestrictionTranslator600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeletedRestrictionTranslator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   using: UsingClauseBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClauseBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ done()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ConnectionRestriction): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ExpressionRestriction): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExistsPrecondition400335662[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExistsPrecondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   restrictions: RestrictionDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: PreconditionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendRestriction(res: RestrictionDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendRestriction(res: Restriction)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExpressionRestriction1325165729[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExpressionRestriction</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   node: ExpressionNode [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: RestrictionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ canBeCombined(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): ExpressionRestriction</TD></TR>
+<TR><TD ALIGN="LEFT" >+ combineWith(obj: Restriction): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExpressionRestrictionBuilder1325165729[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExpressionRestrictionBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): ExpressionRestriction</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ExpressionRestrictionBuilderBase1325165729[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ExpressionRestrictionBuilderBase&lt;BuilderT extends ExpressionRestrictionBuilderBase&lt;BuilderT&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: ExpressionRestriction [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ makeComparison(): ComparisonExpressionNodeSubBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ makeNode(): CompositeExpressionNodeSubBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FKey1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FKey</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   connections: List&lt;ConnectedColumns&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   tables: ConnectedTables [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addConnection(a: ColumnDef, b: ColumnDef)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FunctionComparisonTargetNode2044428087[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FunctionComparisonTargetNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   arguments: List&lt;ComparisonTargetNode&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   function: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: ComparisonTargetNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addArgument(arg: ComparisonTargetNode)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): FunctionComparisonTargetNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationContext1770909014[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationContext</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   argumentMender: NameMender [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   database: DBCommands [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   databaseDef: DatabaseDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   functionMender: NameMender [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   persistence: Persistence [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   platform: TargetPlatform [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   restrictionRegistry: RestrictionRegistry [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   returnLastPostcondition: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   securityInvoker: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vars: VariableRegistry [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationContextBaseBuilder1770909014[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationContextBaseBuilder&lt;BuilderT extends GenerationContextBaseBuilder&lt;BuilderT&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: GenerationContext [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ makeCombinedPersistence(): CombinedPersistenceSubBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ withContextFromDB(): BuilderT</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationContextBuilder1770909014[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationContextBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): GenerationContext</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationContextSubBuilder525798233[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationContextSubBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   owner: InputPhase [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): InputPhase</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationRequest1770909014[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationRequest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   context: GenerationContext [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   contracts: List&lt;ContractDef&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GenerationRequestBuilder1770909014[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GenerationRequestBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: GenerationRequest [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): GenerationRequest</TD></TR>
+<TR><TD ALIGN="LEFT" >+ makeContract(): ContractDefSubBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InputPhase511324038[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InputPhase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: GenerationRequestBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ finishInput(): GenerationRequest</TD></TR>
+<TR><TD ALIGN="LEFT" >+ makeGenerationContext(): GenerationContextSubBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InsertStatement2037081553[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InsertStatement</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   relatedTables: UniqueValues [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   returnValue: ReturnValue [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: List&lt;StringColumnEquality&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClause [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: StatementVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: ColumnDef, value: String): InsertStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: String, value: String): InsertStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(val: StringColumnEquality): InsertStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRelatedTables(relatedTables: UniqueValues): InsertStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setWhere(clause: WhereClause): InsertStatement</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InsertStatementBuilder2037081553[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InsertStatementBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): InsertStatement</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InsertStatementBuilderBase2037081553[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InsertStatementBuilderBase&lt;BuilderT extends InsertStatementBuilderBase&lt;BuilderT&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: InsertStatement [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addValue(column: String, value: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(column: ColumnDef, value: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ into(table: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ relatedTables(): RelatedTablesBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ where(): WhereClauseBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InsertedPostcondition988101601[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InsertedPostcondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   linkedVariables: List&lt;VariableLink&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   returnValue: Optional&lt;ReturnValue&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: List&lt;ColumnEquality&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: PostconditionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(dslName: String, val: ComparisonTargetNode): InsertedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: ColumnDef, val: ComparisonTargetNode): InsertedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(val: ColumnEquality): InsertedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ linkWith(var: VariableDef, names: List&lt;String&gt;): InsertedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ linkWith(varLink: VariableLink): InsertedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTarget(var: VariableDef): InsertedPostcondition</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InsertedRestrictionTranslator600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InsertedRestrictionTranslator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isb: InsertStatementBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   relatedTables: RelatedTablesBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClauseBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ done()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ConnectionRestriction): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ExpressionRestriction): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LiteralComparisonTargetNode681866404[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LiteralComparisonTargetNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   symbol: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: ComparisonTargetNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): LiteralComparisonTargetNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MemoryPersistence1224684278[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MemoryPersistence</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   memory: ByteArrayOutputStream [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   writer: PrintWriter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ finished(): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startNew(contractName: String): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startNew(): Persistence</TD></TR>
+<TR><TD ALIGN="LEFT" >+ write(s: String): Persistence</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+NameMender511324038[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NameMender</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   verifySQLKeywords: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- changeCamelCaseToSnakeCase(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- changeToLowercase(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mendName(name: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- prependPrefix(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- removeExtra(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- spaceToUnderscore(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- startsWithDigit(s: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- translateAllEstonianChars(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- verifyDoesNotStartWithDigit(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- verifyNonEmpty(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- verifyNotKeyword(): NameMender</TD></TR>
+<TR><TD ALIGN="LEFT" >- verifyPrefixIsLowercaseLatin(): NameMender</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PKey1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PKey</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   column: ColumnDef [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pair1773468584[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pair&lt;KeyType, ValueType&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   key: KeyType [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: ValueType [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PostconditionTranslator600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PostconditionTranslator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ctx: GenerationContext [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   reg: RestrictionRegistry [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   statement: Statement [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- handleReturnIdentifier(target: VariableDef, rv: ReturnValue): PostconditionTranslator</TD></TR>
+<TR><TD ALIGN="LEFT" >- preprocessColumnEquality(target: VariableDef, ce: ColumnEquality)</TD></TR>
+<TR><TD ALIGN="LEFT" >- preprocessReturnValue(target: VariableDef, rv: ReturnValue)</TD></TR>
+<TR><TD ALIGN="LEFT" >- processColumnEquality(target: VariableDef, equalities: Collection&lt;ColumnEquality&gt;, callback: BiConsumer&lt;ColumnDef, String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- translateReturnColumnNameIfSet(target: VariableDef, rv: ReturnValue): PostconditionTranslator</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PostcondtionToRestrictionVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PostcondtionToRestrictionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentTarget: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   workload: Map&lt;String, Runnable&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addComparison(target: VariableDef, targetColumn: DSLName, comparison: ComparisonType, value: ComparisonTargetNode)</TD></TR>
+<TR><TD ALIGN="LEFT" ># addConnectionKeyColumnLinkToComposite(builder: CompositeExpressionNodeSubBuilder, fkeyA: VariableDef, fkeyB: VariableDef, conn: ConnectedColumns)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ apply()</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleLinks(target: VariableDef, links: Collection&lt;VariableLink&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- keyRelevant(fk: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- keysRelevant(fkeyA: VariableDef, fkeyB: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- registerValuesAsRestrictions(target: VariableDef, values: Collection&lt;ColumnEquality&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- requiresIs(value: ComparisonTargetNode): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PostgresDriver306639253[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PostgresDriver</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   sqlTypeInterpreter: PostgresTypeInterpreter [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- dslName(schema: String, tableName: String): DSLName</TD></TR>
+<TR><TD ALIGN="LEFT" ># implementationDriverName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- readConnections(ddb: DatabaseDefBuilder): PostgresDriver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readDb(): DatabaseDef</TD></TR>
+<TR><TD ALIGN="LEFT" >- readPkeys(ddb: DatabaseDefBuilder): PostgresDriver</TD></TR>
+<TR><TD ALIGN="LEFT" >- readTables(ddb: DatabaseDefBuilder): PostgresDriver</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PostgresPlatform306639253[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PostgresPlatform</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getOutputGenerator(context: GenerationContext): OutputGenerator</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PrecondtionToRestrictionVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PrecondtionToRestrictionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(c: ExistsPrecondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: ConnectionPrecondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RestrictionDef1092956283[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RestrictionDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   restrictions: List&lt;Restriction&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clone(): RestrictionDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendWith(res: Collection&lt;Restriction&gt;): RestrictionDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendWith(res: RestrictionDef): RestrictionDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendWith(res: Restriction): RestrictionDef</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RestrictionRegistry1150469947[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RestrictionRegistry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   data: RestrictionDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ignored: Set&lt;String&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addIgnoredVariable(var: VariableDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendRestriction(res: RestrictionDef): RestrictionRegistry</TD></TR>
+<TR><TD ALIGN="LEFT" >+ extendRestriction(res: Restriction): RestrictionRegistry</TD></TR>
+<TR><TD ALIGN="LEFT" >- getKey(var: VariableDef): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isIgnored(var: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resetRestrictions()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReturnIdentifierVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReturnIdentifierVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReturnValue600746759[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReturnValue</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   column: Optional&lt;ColumnDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   symbolValue: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SearchPathResolverRestrictionVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SearchPathResolverRestrictionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   callback: Consumer&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   db: DatabaseDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- accept(target: VariableDef, links: List&lt;VariableLink&gt;): SearchPathResolverRestrictionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >- accept(t1: TableDef, t2: TableDef, names: List&lt;String&gt;): SearchPathResolverRestrictionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >- accept(var: VariableDef): SearchPathResolverRestrictionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >- accept(td: TableDef): SearchPathResolverRestrictionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: ExistsPrecondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: ConnectionPrecondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StringName1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StringName</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ compareTo(other: StringName): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TableDef1009830444[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TableDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cols: Map&lt;DSLName, ColumnDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   identifier: Optional&lt;PKey&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: AliasedName [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nameMap: Map&lt;DBName, DSLName&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addColumn(col: ColumnDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addColumns(cols: Collection&lt;ColumnDef&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): TableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColumn(dslName: DSLName): ColumnDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColumn(dbName: DBName): ColumnDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColumnDB(name: String): ColumnDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColumnDSL(name: String): ColumnDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasColumn(col: ColumnDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasColumn(dbName: DBName): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasColumnDB(dbName: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasColumnDSL(dslName: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TargettedPostcondtionToRestrictionVisitor600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TargettedPostcondtionToRestrictionVisitor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentVariable: VariableDef [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># addConnectionKeyColumnLinkToComposite(builder: CompositeExpressionNodeSubBuilder, fkeyA: VariableDef, fkeyB: VariableDef, conn: ConnectedColumns)</TD></TR>
+<TR><TD ALIGN="LEFT" >- handleLinks(target: VariableDef, links: Collection&lt;VariableLink&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- shouldProcessLinkWith(col: ColumnDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UnaryExpressionNode1312947632[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UnaryExpressionNode</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   negate: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   node: ExpressionNode [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: RestrictionExpressionNodeVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clone(): UnaryExpressionNode</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UpdateStatement1692135361[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UpdateStatement</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   relatedTables: UniqueValues [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   returnValue: ReturnValue [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: List&lt;StringColumnEquality&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClause [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: StatementVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: ColumnDef, value: String): UpdateStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: String, value: String): UpdateStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(val: StringColumnEquality): UpdateStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRelatedTables(relatedTables: UniqueValues): UpdateStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setWhere(clause: WhereClause): UpdateStatement</TD></TR>
+<TR><TD ALIGN="LEFT" >- translateColumnEquality(col: StringColumnEquality): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UpdateStatementBuilder1692135361[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UpdateStatementBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ build(): UpdateStatement</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UpdateStatementBuilderBase1692135361[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UpdateStatementBuilderBase&lt;BuilderT extends UpdateStatementBuilderBase&lt;BuilderT&gt;&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: UpdateStatement [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addValue(column: String, value: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(column: ColumnDef, value: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ into(table: String): BuilderT</TD></TR>
+<TR><TD ALIGN="LEFT" >+ relatedTables(): RelatedTablesBuilder</TD></TR>
+<TR><TD ALIGN="LEFT" >+ where(): WhereClauseBuilder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UpdatedPostcondition699423532[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UpdatedPostcondition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   linkedVariables: List&lt;VariableLink&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   returnValue: Optional&lt;ReturnValue&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   target: VariableDef [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   values: List&lt;ColumnEquality&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ accept(visitor: PostconditionVisitor&lt;T&gt;): T</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(dslName: String, val: ComparisonTargetNode): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(col: ColumnDef, val: ComparisonTargetNode): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addValue(val: ColumnEquality): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ linkWith(var: VariableDef, names: List&lt;String&gt;): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ linkWith(varLink: VariableLink): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setTarget(var: VariableDef): UpdatedPostcondition</TD></TR>
+<TR><TD ALIGN="LEFT" >+ unlinkFrom(var: VariableDef, names: List&lt;String&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UpdatedRestrictionTranslator600907574[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UpdatedRestrictionTranslator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   relatedTables: RelatedTablesBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   usb: UpdateStatementBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   where: WhereClauseBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ done()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isTarget(var: VariableDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isTargetColumn(col: ColumnDef): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ConnectionRestriction): Void</TD></TR>
+<TR><TD ALIGN="LEFT" >+ visit(r: ExpressionRestriction): Void</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+VariableDef2138134883[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VariableDef</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: TableDef [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+VariableLink600746759[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VariableLink</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   unlink: boolean [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+VariableRegistry2138134883[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)VariableRegistry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   data: Map&lt;String, VariableDef&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ find(name: String): VariableDef</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerVariable(var: VariableDef): VariableRegistry</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+ArgumentPostconditionVisitor1268088010 -> ArgumentResolver1268088010[label="resolver
+[0..1]"];
+ArgumentResolver1268088010 -> ArgumentDef1798038948[label="argRef
+[0..1]"];
+ArgumentResolver1268088010 -> CompositeComparisonTargetNode1205659124[arrowhead=none];
+ArgumentResolver1268088010 -> FunctionComparisonTargetNode2044428087[arrowhead=none];
+ArgumentResolver1268088010 -> LiteralComparisonTargetNode681866404[arrowhead=none];
+ArgumentResolver1268088010 -> TableDef1009830444[label="consider() -> getColumn()"];
+CompositeNode29133328 -> CompositeComparisonTargetNode1205659124[arrowhead=none, arrowtail=empty, dir=both];
+ConditionToRestrictionTranslator600907574 -> PostcondtionToRestrictionVisitor600907574[arrowhead=none, arrowtail=empty, dir=both];
+ConditionToRestrictionTranslator600907574 -> TargettedPostcondtionToRestrictionVisitor600907574[arrowhead=none, arrowtail=empty, dir=both];
+ConnectedValues1009830444 -> ConnectedStrings1009830444[arrowhead=none, arrowtail=empty, dir=both];
+ConnectionPrecondition1962707792 -> VariableDef2138134883[label="a
+[0..1]"];
+ConnectionPrecondition1962707792 -> VariableDef2138134883[label="b
+[0..1]"];
+ConnectionRestriction1950000921 -> ArgumentRestrictionVisitor1268088010[arrowhead=none];
+ConnectionRestriction1950000921 -> DeletedRestrictionTranslator600907574[arrowhead=none];
+ConnectionRestriction1950000921 -> InsertedRestrictionTranslator600907574[arrowhead=none];
+ConnectionRestriction1950000921 -> UpdatedRestrictionTranslator600907574[arrowhead=none];
+ConnectionRestriction1950000921 -> VariableDef2138134883[label="a
+[0..1]"];
+ConnectionRestriction1950000921 -> VariableDef2138134883[label="b
+[0..1]"];
+ContractDef1239972057 -> ArgumentDef1798038948[label="arguments
+[0..1]"];
+ContractDef1239972057 -> ArgumentResolver1268088010[label="resolveArgumentTypes() -> addArgumentReference()"];
+ContractDef1239972057 -> ConnectionPrecondition1962707792[arrowhead=none];
+ContractDef1239972057 -> DeletedPostcondition1085469746[arrowhead=none];
+ContractDef1239972057 -> ExistsPrecondition400335662[arrowhead=none];
+ContractDef1239972057 -> InsertedPostcondition988101601[arrowhead=none];
+ContractDef1239972057 -> UpdatedPostcondition699423532[arrowhead=none];
+DBCommands1100076625 -> DBDriver1100076625[label="driver
+[0..1]"];
+DBDriver1100076625 -> ConnectionDetails1100076625[label="defaultConnectionDetails
+[0..1]"];
+DBDriver1100076625 -> PostgresDriver306639253[arrowhead=none, arrowtail=empty, dir=both];
+DatabaseDef1009830444 -> ConnectedStrings1009830444[label="connections
+[0..1]"];
+DatabaseDef1009830444 -> DBName1009830444[label="nameMap
+[0..1]"];
+DatabaseDef1009830444 -> DSLName1009830444[label="nameMap
+[0..1]"];
+DatabaseDef1009830444 -> DSLName1009830444[label="tables
+[0..1]"];
+DatabaseDef1009830444 -> FKey1009830444[label="connections
+[0..1]"];
+DatabaseDef1009830444 -> TableDef1009830444[label="tables
+[0..1]"];
+DatabasePersistence1224684278 -> DBDriver1100076625[label="driver
+[0..1]"];
+DatabasePersistence1224684278 -> MemoryPersistence1224684278[label="memory
+[0..1]"];
+DeletedPostcondition1085469746 -> ReturnValue600746759[label="returnValue
+[0..1]"];
+DeletedPostcondition1085469746 -> VariableDef2138134883[label="target
+[0..1]"];
+ExistsPrecondition400335662 -> RestrictionDef1092956283[label="restrictions
+[0..1]"];
+ExistsPrecondition400335662 -> VariableDef2138134883[label="target
+[0..1]"];
+ExpressionRestriction1325165729 -> ComparisonExpressionNode304664616[arrowhead=none];
+ExpressionRestriction1325165729 -> CompositeExpressionNode1362686328[arrowhead=none];
+ExpressionRestriction1325165729 -> UnaryExpressionNode1312947632[arrowhead=none];
+ExpressionRestriction1325165729 -> VariableDef2138134883[label="target
+[0..1]"];
+FKey1009830444 -> ConnectedColumns1009830444[label="connections
+[0..1]"];
+FKey1009830444 -> ConnectedTables1009830444[label="tables
+[0..1]"];
+GenerationContext1770909014 -> CombinedPersistence1224684278[arrowhead=none];
+GenerationContext1770909014 -> DBCommands1100076625[label="database
+[0..1]"];
+GenerationContext1770909014 -> DatabaseDef1009830444[label="databaseDef
+[0..1]"];
+GenerationContext1770909014 -> DatabasePersistence1224684278[arrowhead=none];
+GenerationContext1770909014 -> MemoryPersistence1224684278[arrowhead=none];
+GenerationContext1770909014 -> NameMender511324038[label="argumentMender
+[0..1]"];
+GenerationContext1770909014 -> NameMender511324038[label="functionMender
+[0..1]"];
+GenerationContext1770909014 -> PostgresPlatform306639253[arrowhead=none];
+GenerationContext1770909014 -> RestrictionRegistry1150469947[label="restrictionRegistry
+[0..1]"];
+GenerationContext1770909014 -> VariableRegistry2138134883[label="vars
+[0..1]"];
+GenerationContextBaseBuilder1770909014 -> GenerationContextBuilder1770909014[arrowhead=none, arrowtail=empty, dir=both];
+GenerationContextBaseBuilder1770909014 -> GenerationContextSubBuilder525798233[arrowhead=none, arrowtail=empty, dir=both];
+GenerationContextSubBuilder525798233 -> InputPhase511324038[label="owner
+[0..1]"];
+GenerationRequest1770909014 -> ContractDef1239972057[label="contracts
+[0..1]"];
+GenerationRequest1770909014 -> GenerationContext1770909014[label="context
+[0..1]"];
+GenerationRequestBuilder1770909014 -> GenerationRequest1770909014[label="data
+[0..1]"];
+InputPhase511324038 -> GenerationRequestBuilder1770909014[label="builder
+[0..1]"];
+InsertedPostcondition988101601 -> ColumnEquality1009830444[label="values
+[0..1]"];
+InsertedPostcondition988101601 -> ReturnValue600746759[label="returnValue
+[0..1]"];
+InsertedPostcondition988101601 -> VariableDef2138134883[label="target
+[0..1]"];
+InsertedPostcondition988101601 -> VariableLink600746759[label="linkedVariables
+[0..1]"];
+LiteralComparisonTargetNode681866404 -> ArgumentComparisonTargetVisitor1268088010[arrowhead=none];
+LiteralComparisonTargetNode681866404 -> ComparisonTargetNodeCompositor864757147[arrowhead=none];
+LiteralComparisonTargetNode681866404 -> ComparisonTargetNodePreprocessorVisitor600907574[arrowhead=none];
+LiteralComparisonTargetNode681866404 -> ComparisonTargetNodeStringifierVisitor600907574[arrowhead=none];
+Pair1773468584 -> ColumnEquality1009830444[arrowhead=none, arrowtail=empty, dir=both];
+Pair1773468584 -> VariableLink600746759[arrowhead=none, arrowtail=empty, dir=both];
+PostconditionTranslator600907574 -> DeleteStatement2106219809[arrowhead=none];
+PostconditionTranslator600907574 -> DeleteStatementBuilder2106219809[label="visit() -> build()"];
+PostconditionTranslator600907574 -> DeleteStatementBuilderBase2106219809[label="visit() -> from()"];
+PostconditionTranslator600907574 -> DeletedRestrictionTranslator600907574[label="visit() -> done()"];
+PostconditionTranslator600907574 -> GenerationContext1770909014[label="ctx
+[0..1]"];
+PostconditionTranslator600907574 -> InsertStatement2037081553[arrowhead=none];
+PostconditionTranslator600907574 -> InsertStatementBuilder2037081553[label="visit() -> build()"];
+PostconditionTranslator600907574 -> InsertStatementBuilderBase2037081553[label="visit() -> into()"];
+PostconditionTranslator600907574 -> InsertedRestrictionTranslator600907574[label="visit() -> done()"];
+PostconditionTranslator600907574 -> RestrictionRegistry1150469947[label="reg
+[0..1]"];
+PostconditionTranslator600907574 -> UpdateStatement1692135361[arrowhead=none];
+PostconditionTranslator600907574 -> UpdateStatementBuilder1692135361[label="visit() -> build()"];
+PostconditionTranslator600907574 -> UpdateStatementBuilderBase1692135361[label="visit() -> into()"];
+PostconditionTranslator600907574 -> UpdatedRestrictionTranslator600907574[label="visit() -> done()"];
+PostcondtionToRestrictionVisitor600907574 -> ComparisonExpressionNodeSubBuilder1635554853[label="addComparison() -> build()"];
+PostcondtionToRestrictionVisitor600907574 -> ConnectedColumns1009830444[label="addConnectionKeyColumnLinkToComposite() -> getOneBelongingTo()"];
+PostcondtionToRestrictionVisitor600907574 -> ExpressionRestrictionBuilder1325165729[label="addComparison() -> build()"];
+PostcondtionToRestrictionVisitor600907574 -> ExpressionRestrictionBuilderBase1325165729[label="addComparison() -> makeComparison()"];
+PostcondtionToRestrictionVisitor600907574 -> VariableDef2138134883[label="currentTarget
+[0..1]"];
+RestrictionRegistry1150469947 -> ConnectionRestriction1950000921[arrowhead=none];
+RestrictionRegistry1150469947 -> ExpressionRestriction1325165729[arrowhead=none];
+RestrictionRegistry1150469947 -> RestrictionDef1092956283[label="data
+[0..1]"];
+ReturnValue600746759 -> ColumnDef1009830444[label="column
+[0..1]"];
+SearchPathResolverRestrictionVisitor600907574 -> ArgumentPreconditionVisitor1268088010[arrowhead=none];
+SearchPathResolverRestrictionVisitor600907574 -> DatabaseDef1009830444[label="db
+[0..1]"];
+SearchPathResolverRestrictionVisitor600907574 -> PrecondtionToRestrictionVisitor600907574[arrowhead=none];
+StringName1009830444 -> DBName1009830444[arrowhead=none, arrowtail=empty, dir=both];
+StringName1009830444 -> DSLName1009830444[arrowhead=none, arrowtail=empty, dir=both];
+TableDef1009830444 -> AliasedName1009830444[label="name
+[0..1]"];
+TableDef1009830444 -> ColumnDef1009830444[label="cols
+[0..1]"];
+TableDef1009830444 -> DBName1009830444[label="nameMap
+[0..1]"];
+TableDef1009830444 -> DSLName1009830444[label="cols
+[0..1]"];
+TableDef1009830444 -> DSLName1009830444[label="nameMap
+[0..1]"];
+TableDef1009830444 -> PKey1009830444[label="identifier
+[0..1]"];
+TargettedPostcondtionToRestrictionVisitor600907574 -> VariableDef2138134883[label="currentVariable
+[0..1]"];
+UpdatedPostcondition699423532 -> ArgumentPostconditionVisitor1268088010[arrowhead=none];
+UpdatedPostcondition699423532 -> ColumnEquality1009830444[label="values
+[0..1]"];
+UpdatedPostcondition699423532 -> PostconditionTranslator600907574[arrowhead=none];
+UpdatedPostcondition699423532 -> PostcondtionToRestrictionVisitor600907574[arrowhead=none];
+UpdatedPostcondition699423532 -> ReturnIdentifierVisitor600907574[arrowhead=none];
+UpdatedPostcondition699423532 -> ReturnValue600746759[label="returnValue
+[0..1]"];
+UpdatedPostcondition699423532 -> SearchPathResolverRestrictionVisitor600907574[arrowhead=none];
+UpdatedPostcondition699423532 -> TargettedPostcondtionToRestrictionVisitor600907574[arrowhead=none];
+UpdatedPostcondition699423532 -> VariableDef2138134883[label="target
+[0..1]"];
+UpdatedPostcondition699423532 -> VariableLink600746759[label="linkedVariables
+[0..1]"];
+VariableDef2138134883 -> TableDef1009830444[label="table
+[0..1]"];
+VariableRegistry2138134883 -> VariableDef2138134883[label="data
+[0..1]"];
+    
+}
+@enduml

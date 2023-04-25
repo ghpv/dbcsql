@@ -1,0 +1,26 @@
+DROP SCHEMA IF EXISTS public CASCADE
+;
+CREATE SCHEMA IF NOT EXISTS public
+;
+GRANT ALL ON SCHEMA public TO postgres
+;
+GRANT ALL ON SCHEMA public TO public
+;
+
+DROP SCHEMA IF EXISTS myschema CASCADE
+;
+CREATE SCHEMA IF NOT EXISTS myschema
+;
+GRANT ALL ON SCHEMA myschema TO postgres
+;
+GRANT ALL ON SCHEMA myschema TO public
+;
+
+DROP SCHEMA IF EXISTS myschema2 CASCADE
+;
+CREATE SCHEMA IF NOT EXISTS myschema2
+;
+GRANT ALL ON SCHEMA myschema2 TO postgres
+;
+GRANT ALL ON SCHEMA myschema2 TO public
+;
