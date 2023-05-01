@@ -39,7 +39,7 @@ public class InsertWithMultiLinkToSameTableTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.test_multi as m
+			public.test_multi AS m
 		(
 			test_id1,
 			test_id2
@@ -48,7 +48,7 @@ public class InsertWithMultiLinkToSameTableTests extends UseCaseTest
 			a.id,
 			a.id
 		FROM
-			public.test as a
+			public.test AS a
 		WHERE
 			(
 				a.id = p_test_id1

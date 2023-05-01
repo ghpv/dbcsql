@@ -16,7 +16,7 @@ singleTargetOperators: '='
 	|'<'
 ;
 
-multiTargetOperators:'not'? 'in'
+multiTargetOperators :'not'? 'in'
 ;
 
 literalOrVarList: literalOrVar
@@ -24,7 +24,7 @@ literalOrVarList: literalOrVar
 ;
 
 literalOrVar: symbol=ID // p_car_code
-	| NUMBER // 5
+	| ('-'|'+')? NUMBER // 5
 	| STRING // 'active'
 	| functionLiteral
 	| '(' literalOrVar ')'

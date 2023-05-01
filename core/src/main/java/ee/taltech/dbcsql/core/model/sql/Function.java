@@ -15,6 +15,7 @@ public class Function
 	private String returnType = "VOID";
 	private UniqueValues searchSpace = new UniqueValues();
 	private boolean securityInvoker;
+	private String comment;
 
 	public Function()
 	{
@@ -102,6 +103,16 @@ public class Function
 	public boolean getSecurityInvoker()
 	{
 		return this.securityInvoker;
+	}
+
+	public String getComment()
+	{
+		return comment;
+	}
+
+	public void setComment(String comment)
+	{
+		this.comment = comment;
 	}
 
 	@Override

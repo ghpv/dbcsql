@@ -72,14 +72,14 @@ public class UpdateMultipleRestrictionsTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_text1 = p_col_text1
 		WHERE
 			vd.col_int1 = p_col_int1
 		;
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_int2 = p_col_int2
 		WHERE
@@ -89,7 +89,7 @@ public class UpdateMultipleRestrictionsTests extends UseCaseTest
 			)
 		;
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_timestamp1 = p_col_timestamp1
 		WHERE
@@ -100,7 +100,7 @@ public class UpdateMultipleRestrictionsTests extends UseCaseTest
 			)
 		;
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_date1 = p_col_date1
 		WHERE
@@ -112,7 +112,7 @@ public class UpdateMultipleRestrictionsTests extends UseCaseTest
 			)
 		;
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_short1 = p_col_short1
 		WHERE
@@ -125,7 +125,7 @@ public class UpdateMultipleRestrictionsTests extends UseCaseTest
 			)
 		;
 		UPDATE
-			public.vardata as vd
+			public.vardata AS vd
 		SET
 			col_float1 = p_col_float1
 		WHERE

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDef;
 import ee.taltech.dbcsql.core.model.dsl.argument.resolution.ArgumentPostconditionVisitor;
@@ -19,6 +20,7 @@ public class ContractDef
 	private List<ArgumentDef> arguments = new LinkedList<>();
 	private List<PreconditionDef> preconditions = new LinkedList<>();
 	private List<PostconditionDef> postconditions = new LinkedList<>();
+	private Optional<String> comment = Optional.empty();
 
 	public ContractDef()
 	{
@@ -112,6 +114,21 @@ public class ContractDef
 		{
 			throw new TranslatorInputException("Argument type could not be resolved for: " + argRes.getUnresolvedArguments());
 		}
+	}
+
+	public Optional<String> getComment()
+	{
+		return comment;
+	}
+
+	public void setComment(Optional<String> comment)
+	{
+		this.comment = comment;
+	}
+
+	public void setComment(String comment)
+	{
+		this.setComment(Optional.ofNullable(comment));
 	}
 
 	@Override

@@ -32,6 +32,7 @@ import ee.taltech.dbcsql.core.phase.GenerationContext;
 import ee.taltech.dbcsql.core.phase.TranslatorInputException;
 import ee.taltech.dbcsql.core.phase.input.ContractBaseListener;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.ArgContext;
+import ee.taltech.dbcsql.core.phase.input.ContractParser.CommentDeclContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.ConnectionPreconditionContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.ContractContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.DeletedPostconditionContext;
@@ -468,6 +469,12 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 	{
 		this.updated.build();
 		this.updated = null;
+	}
+
+	@Override
+	public void enterCommentDecl(CommentDeclContext ctx)
+	{
+		this.contract.withComment(ctx.STRING().getText());
 	}
 
 	private VariableDef findVariable(String alias)

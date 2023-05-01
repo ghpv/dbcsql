@@ -18,11 +18,11 @@ public class DeleteFromCategoryTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			auto_kategooria_omamine as cco
+			auto_kategooria_omamine AS cco
 		USING
-			auto_seisundi_liik as status,
-			auto as c,
-			auto_kategooria as category
+			auto_seisundi_liik AS status,
+			auto AS c,
+			auto_kategooria AS category
 		WHERE
 			(
 				status.nimetus in ('Aktiivne', 'Mitteaktiivne')

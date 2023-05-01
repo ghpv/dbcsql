@@ -23,7 +23,7 @@ public class DeleteStatementModelTests extends IntegrationTest
 		;
 
 		String actual = this.generateCondition(condition);
-		String expected = "DELETE FROM public.test as a ;";
+		String expected = "DELETE FROM public.test AS a ;";
 
 		SQLStatementAssertions.assertStatementsEqual(actual, expected);
 	}
@@ -54,7 +54,7 @@ public class DeleteStatementModelTests extends IntegrationTest
 		this.reg.extendRestriction(restriction);
 
 		String actual = this.generateCondition(condition);
-		String expected = "DELETE FROM public.test as a WHERE ( a.id = 5 ) ;";
+		String expected = "DELETE FROM public.test AS a WHERE ( a.id = 5 ) ;";
 
 		SQLStatementAssertions.assertStatementsEqual(actual, expected);
 	}

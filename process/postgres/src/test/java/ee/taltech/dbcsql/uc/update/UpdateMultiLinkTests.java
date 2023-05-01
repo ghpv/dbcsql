@@ -43,13 +43,13 @@ public class UpdateMultiLinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test_multi as m
+			public.test_multi AS m
 		SET
 			test_id1 = a.id,
 			test_id2 = b.id
 		FROM
-			public.test as a,
-			public.test as b
+			public.test AS a,
+			public.test AS b
 		WHERE
 			(
 				a.id = p_test_id1

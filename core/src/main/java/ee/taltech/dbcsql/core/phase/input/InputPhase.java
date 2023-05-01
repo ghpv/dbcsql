@@ -1,6 +1,7 @@
 package ee.taltech.dbcsql.core.phase.input;
 
 import java.io.InputStream;
+import java.util.Locale;
 
 import ee.taltech.dbcsql.core.phase.GenerationContext;
 import ee.taltech.dbcsql.core.phase.GenerationContextBaseBuilder;
@@ -10,6 +11,11 @@ import ee.taltech.dbcsql.core.phase.input.contract.ContractInputParser;
 
 public class InputPhase
 {
+	static
+	{
+		Locale.setDefault(new Locale("en", "US"));
+		System.setProperty("file.encoding", "UTF-8");
+	}
 	private GenerationRequestBuilder builder = new GenerationRequestBuilder();
 
 	public InputPhase withGenerationContext(GenerationContext context)

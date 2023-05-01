@@ -28,7 +28,7 @@ public class RegisterCarTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			auto as a
+			auto AS a
 		(
 			auto_kood,
 			nimetus,
@@ -57,10 +57,10 @@ public class RegisterCarTests extends SampleDataTest
 			cb.auto_mark_kood,
 			w.isik_id
 		FROM
-			auto_seisundi_liik as status,
-			auto_kytuse_liik as cft,
-			auto_mark as cb,
-			tootaja as w
+			auto_seisundi_liik AS status,
+			auto_kytuse_liik AS cft,
+			auto_mark AS cb,
+			tootaja AS w
 		WHERE
 			(
 				status.nimetus = 'Ootel'

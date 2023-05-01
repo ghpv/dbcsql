@@ -40,11 +40,11 @@ public class UpdateUnlinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			test_status_id = null
 		FROM
-			public.test_status as status
+			public.test_status AS status
 		WHERE
 			(
 				a.id = p_id

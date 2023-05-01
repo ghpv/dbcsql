@@ -186,6 +186,13 @@ public class ContractDefBuilderBase<BuilderT extends ContractDefBuilderBase<Buil
 	}
 
 	@SuppressWarnings("unchecked")
+	public BuilderT withComment(String comm)
+	{
+		this.data.setComment(comm);
+		return (BuilderT) this;
+	}
+
+	@SuppressWarnings("unchecked")
 	public UpdatedPostconditionSubBuilder makeUpdatedPostcondition()
 	{
 		return new UpdatedPostconditionSubBuilder((BuilderT) this);

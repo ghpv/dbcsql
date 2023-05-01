@@ -45,14 +45,14 @@ public class InsertRestrictionsNotApplyTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			data = p_data
 		WHERE
 			a.id = p_id
 		;
 		INSERT INTO
-			public.test as b
+			public.test AS b
 		(
 			id,
 			data
@@ -61,7 +61,7 @@ public class InsertRestrictionsNotApplyTests extends UseCaseTest
 			(p_id+1),
 			('really '||p_data)
 		FROM
-			public.test as a
+			public.test AS a
 		WHERE
 			(
 				a.data = p_data

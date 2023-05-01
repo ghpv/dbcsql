@@ -35,9 +35,9 @@ public class ConnectedDeleteTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.test as a
+			public.test AS a
 		USING
-			public.test_status as st
+			public.test_status AS st
 		WHERE
 			(
 				st.name = 'active'

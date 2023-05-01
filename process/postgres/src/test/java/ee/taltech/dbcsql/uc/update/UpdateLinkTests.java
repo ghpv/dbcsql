@@ -41,11 +41,11 @@ public class UpdateLinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			test_status_id = status.test_status_id
 		FROM
-			public.test_status as status
+			public.test_status AS status
 		WHERE
 			(
 				status.name = p_status_name

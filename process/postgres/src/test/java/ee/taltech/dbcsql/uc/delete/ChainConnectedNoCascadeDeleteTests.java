@@ -42,11 +42,11 @@ public class ChainConnectedNoCascadeDeleteTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.nc_chain_d as d
+			public.nc_chain_d AS d
 		USING
-			public.nc_chain_a as a,
-			public.nc_chain_b as b,
-			public.nc_chain_c as c
+			public.nc_chain_a AS a,
+			public.nc_chain_b AS b,
+			public.nc_chain_c AS c
 		WHERE
 			(
 				a.data = '1'
@@ -56,10 +56,10 @@ public class ChainConnectedNoCascadeDeleteTests extends UseCaseTest
 			)
 		;
 		DELETE FROM
-			public.nc_chain_c as c
+			public.nc_chain_c AS c
 		USING
-			public.nc_chain_a as a,
-			public.nc_chain_b as b
+			public.nc_chain_a AS a,
+			public.nc_chain_b AS b
 		WHERE
 			(
 				a.data = '1'
@@ -68,9 +68,9 @@ public class ChainConnectedNoCascadeDeleteTests extends UseCaseTest
 			)
 		;
 		DELETE FROM
-			public.nc_chain_b as b
+			public.nc_chain_b AS b
 		USING
-			public.nc_chain_a as a
+			public.nc_chain_a AS a
 		WHERE
 			(
 				a.data = '1'
@@ -78,7 +78,7 @@ public class ChainConnectedNoCascadeDeleteTests extends UseCaseTest
 			)
 		;
 		DELETE FROM
-			public.nc_chain_a as a
+			public.nc_chain_a AS a
 		WHERE
 			a.data = '1'
 		;

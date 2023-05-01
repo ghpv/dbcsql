@@ -1,4 +1,4 @@
-package ee.taltech.dbcsql.uc.update;
+package ee.taltech.dbcsql.uc.delete;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -8,28 +8,26 @@ import org.testng.annotations.Test;
 
 import ee.taltech.dbcsql.uc.UseCaseTest;
 
-public class SimpleUpdateTests extends UseCaseTest
+public class DeleteWithCommentTests extends UseCaseTest
 {
 	private static final InputStream CONTRACT_STREAM = new ByteArrayInputStream("""
-	operation update_test
+	operation forget_test
 	{
 		p_data;
 	}
 	preconditions
 	{
-		exists test a;
+		exists test a (data=p_data);
 	}
 	postconditions
 	{
-		updated a
-		{
-			data = p_data;
-		};
+		deleted a;
 	}
+	comment 'wow\\'s wowow!';
 	""".getBytes());
 
 	private static final String EXPECTED_OUTPUT = """
-	CREATE OR REPLACE FUNCTION update_test
+	CREATE OR REPLACE FUNCTION forget_test
 	(
 		p_data VARCHAR
 	)
@@ -37,12 +35,16 @@ public class SimpleUpdateTests extends UseCaseTest
 	LANGUAGE SQL SECURITY DEFINER
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
-		UPDATE
+		DELETE FROM
 			public.test AS a
-		SET
-			data = p_data
+		WHERE
+			a.data = p_data
 		;
 	END;
+	COMMENT ON FUNCTION forget_test
+	(
+		p_data VARCHAR
+	) IS 'wow''s wowow!';
 	""";
 
 	@Test
@@ -51,12 +53,12 @@ public class SimpleUpdateTests extends UseCaseTest
 		this.generateAndCheck(CONTRACT_STREAM, EXPECTED_OUTPUT);
 
 		this
-			.exec("insert into test (data) values ('not wow')")
-			.exec("select update_test('wow')")
+			.exec("insert into test values (1, 'wow', 1), (2, 'not so wow', 1)")
+			.exec("select forget_test('not so wow')")
 			.assertQuery(
-				"select data from test",
-				List.of(List.of("wow")),
-				"Data was updated"
+				"select * from test",
+				List.of(List.of(1, "wow", 1)),
+				"not so wow must have been deleted"
 			)
 		;
 	}

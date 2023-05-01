@@ -42,7 +42,7 @@ public class UpdateReturningTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			data = p_data
 		WHERE

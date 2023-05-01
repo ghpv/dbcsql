@@ -17,13 +17,13 @@ public class ActivateCarTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			auto as a
+			auto AS a
 		SET
 			auto_seisundi_liik_kood = new_status.auto_seisundi_liik_kood
 		FROM
-			auto_seisundi_liik as old_status,
-			auto_seisundi_liik as new_status,
-			auto_kategooria_omamine as cco
+			auto_seisundi_liik AS old_status,
+			auto_seisundi_liik AS new_status,
+			auto_kategooria_omamine AS cco
 		WHERE
 			(
 				a.auto_kood = p_car_id

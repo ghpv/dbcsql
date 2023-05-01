@@ -41,7 +41,7 @@ public class InsertCheckUnrelatedTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.test as a
+			public.test AS a
 		(
 			id,
 			data
@@ -50,7 +50,7 @@ public class InsertCheckUnrelatedTests extends UseCaseTest
 			p_id,
 			p_data
 		FROM
-			public.vardata as vd
+			public.vardata AS vd
 		WHERE
 			vd.col_int1 = 5
 		;

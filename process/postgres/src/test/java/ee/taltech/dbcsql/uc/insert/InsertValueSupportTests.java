@@ -37,7 +37,7 @@ public class InsertValueSupportTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.vardata as a
+			public.vardata AS a
 		(
 			%s
 		)
@@ -94,6 +94,33 @@ public class InsertValueSupportTests extends UseCaseTest
 							"select col_date1 from vardata",
 							List.of(List.of(Date.valueOf(LocalDate.now()).toString())),
 							"Must be today"
+						);
+					}
+				}
+			},
+			{
+				"""
+				col_int1 = 2+3;
+				"""
+				,
+				"""
+				col_int1
+				"""
+				,
+				"""
+				(2+3)
+				"""
+				,
+				new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						exec("select insert_vardata()");
+						assertQueryAsStr(
+							"select col_int1 from vardata",
+							List.of(List.of(5)),
+							"2+3 = 5"
 						);
 					}
 				}

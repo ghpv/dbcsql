@@ -37,7 +37,7 @@ public class DeleteReturnOnLastPostcondition extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.test as a
+			public.test AS a
 		WHERE
 			a.id = p_id
 		RETURNING

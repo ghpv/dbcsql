@@ -6,14 +6,13 @@ fragment DIGIT: [0-9];
 fragment INT: DIGIT+;
 fragment EST_CHAR: (CHAR | EST_ONLY_CHAR);
 
-NUMBER: ('-'|'+') NUMBER
-	| INT
+NUMBER: INT
 	| INT '.' INT?
 	| '.' INT
 ;
 SINGLE_QUOTE: '\'';
 SINGLE_DQUOTE: '"';
-STRING: SINGLE_QUOTE (~['])* SINGLE_QUOTE;
+STRING: SINGLE_QUOTE ('\\\'' | ~['])* SINGLE_QUOTE;
 
 fragment ID_START: (EST_CHAR | '_');
 fragment ID_END: (EST_CHAR | DIGIT | '_');

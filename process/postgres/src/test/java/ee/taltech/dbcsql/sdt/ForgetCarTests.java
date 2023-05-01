@@ -17,9 +17,9 @@ public class ForgetCarTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			auto as c
+			auto AS c
 		USING
-			auto_seisundi_liik as status
+			auto_seisundi_liik AS status
 		WHERE
 			(
 				c.auto_kood = p_car_id

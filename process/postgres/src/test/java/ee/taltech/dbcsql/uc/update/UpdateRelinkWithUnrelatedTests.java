@@ -42,13 +42,13 @@ public class UpdateRelinkWithUnrelatedTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			test_status_id = new_status.test_status_id
 		FROM
-			public.test_status as old_status,
-			public.test_status as new_status,
-			public.vardata as vd
+			public.test_status AS old_status,
+			public.test_status AS new_status,
+			public.vardata AS vd
 		WHERE
 			(
 				a.id = p_id

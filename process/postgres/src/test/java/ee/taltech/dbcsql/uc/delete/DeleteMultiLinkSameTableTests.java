@@ -38,9 +38,9 @@ public class DeleteMultiLinkSameTableTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.test_multi as b
+			public.test_multi AS b
 		USING
-			public.test as a
+			public.test AS a
 		WHERE
 			(
 				a.id = p_id

@@ -38,10 +38,10 @@ public class DeleteMultipleConnectionsLongTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.test_multi2 as c
+			public.test_multi2 AS c
 		USING
-			public.test as a,
-			public.test_multi as b
+			public.test AS a,
+			public.test_multi AS b
 		WHERE
 			(
 				a.id = p_id

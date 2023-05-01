@@ -43,7 +43,7 @@ public class InsertRestrictionMustApplyTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.test as a
+			public.test AS a
 		(
 			id
 		)
@@ -53,7 +53,7 @@ public class InsertRestrictionMustApplyTests extends UseCaseTest
 		)
 		;
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			data = p_data
 		WHERE

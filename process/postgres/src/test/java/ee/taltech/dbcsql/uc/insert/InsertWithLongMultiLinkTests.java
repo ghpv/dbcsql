@@ -39,15 +39,15 @@ public class InsertWithLongMultiLinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.test_multi2 as m
+			public.test_multi2 AS m
 		(
 			test_multi_id2
 		)
 		SELECT
 			test_multi.id
 		FROM
-			public.test as a,
-			public.test_multi as test_multi
+			public.test AS a,
+			public.test_multi AS test_multi
 		WHERE
 			(
 				a.id = p_test_id

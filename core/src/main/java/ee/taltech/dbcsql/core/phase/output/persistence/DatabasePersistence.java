@@ -22,7 +22,28 @@ public class DatabasePersistence implements Persistence
 			.getMemory()
 			.toString()
 		;
-		this.driver.execute(qry);
+		int start = 0;
+		int idx = -1;
+		while (true)
+		{
+			idx = qry.indexOf("END;", start);
+			if (idx != -1)
+			{
+				idx += 4;
+			}
+			else
+			{
+				break;
+			}
+			String subqry = qry.substring(start, idx);
+			start = idx;
+			this.driver.execute(subqry);
+		}
+		String subqry = qry.substring(start);
+		if (!subqry.strip().equals(""))
+		{
+			this.driver.execute(subqry);
+		}
 	}
 
 	@Override

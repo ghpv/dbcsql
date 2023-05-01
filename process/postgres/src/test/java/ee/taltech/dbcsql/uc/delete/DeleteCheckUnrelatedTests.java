@@ -36,9 +36,9 @@ public class DeleteCheckUnrelatedTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.test as a
+			public.test AS a
 		USING
-			public.vardata as vd
+			public.vardata AS vd
 		WHERE
 			(
 				a.id = p_id

@@ -46,11 +46,11 @@ public class UpdateRestrictionUnlinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			test_status_id = null
 		FROM
-			public.test_status as st
+			public.test_status AS st
 		WHERE
 			(
 				a.id = p_id
@@ -58,11 +58,11 @@ public class UpdateRestrictionUnlinkTests extends UseCaseTest
 			)
 		;
 		UPDATE
-			public.test as a
+			public.test AS a
 		SET
 			data = p_data
 		FROM
-			public.test_status as st
+			public.test_status AS st
 		WHERE
 			(
 				a.test_status_id is null

@@ -37,9 +37,9 @@ public class DeleteSchemaTables extends UseCaseTest
 	SET SEARCH_PATH TO 'myschema', 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			myschema.test as a
+			myschema.test AS a
 		USING
-			myschema.test_status as status
+			myschema.test_status AS status
 		WHERE
 		(
 			a.id = p_id

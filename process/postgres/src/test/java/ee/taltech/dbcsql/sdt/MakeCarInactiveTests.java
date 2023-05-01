@@ -17,12 +17,12 @@ public class MakeCarInactiveTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			auto as a
+			auto AS a
 		SET
 			auto_seisundi_liik_kood = new_status.auto_seisundi_liik_kood
 		FROM
-			auto_seisundi_liik as new_status,
-			auto_seisundi_liik as old_status
+			auto_seisundi_liik AS new_status,
+			auto_seisundi_liik AS old_status
 		WHERE
 			(
 				new_status.nimetus in ('Mitteaktiivne')

@@ -35,7 +35,7 @@ public class DeleteSpacedTableNameTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public."Annoying name" as a
+			public."Annoying name" AS a
 		WHERE
 			a.id = p_id
 		;

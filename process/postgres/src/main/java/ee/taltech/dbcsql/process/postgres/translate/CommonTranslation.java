@@ -55,7 +55,7 @@ public class CommonTranslation
 		StringBuilder sb = new StringBuilder();
 		return sb
 			.append(translateTableName(var.getTable()))
-			.append(" as ")
+			.append(" AS ")
 			.append(var.getAlias())
 			.toString()
 		;

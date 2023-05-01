@@ -12,6 +12,7 @@ Combining these 2 definitions the utility then translates a contract into a vali
 Only a single contract should be supplied at a time.
 
 Currently, only recent postgres syntax is supported - each operation outputted assumes it will be used in postgres database, in some version that supports having plain SQL operations within the functions.
+Additionally, please note that only `UTF-8` encoding is supported, if you are getting weird characters please check whether you are using `UTF-8`.
 
 ## Context
 

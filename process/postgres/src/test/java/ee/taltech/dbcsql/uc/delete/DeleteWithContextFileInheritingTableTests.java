@@ -36,9 +36,9 @@ public class DeleteWithContextFileInheritingTableTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			test as a
+			test AS a
 		USING
-			test_status as b
+			test_status AS b
 		WHERE
 			(
 				b.name = 'active'

@@ -41,13 +41,13 @@ public class UpdateLongLinkTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			public.chain_d as d
+			public.chain_d AS d
 		SET
 			chain_c_id = chain_c.chain_c_id
 		FROM
-			public.chain_a as a,
-			public.chain_b as chain_b,
-			public.chain_c as chain_c
+			public.chain_a AS a,
+			public.chain_b AS chain_b,
+			public.chain_c AS chain_c
 		WHERE
 			(
 				a.chain_a_id = p_chain_a_id

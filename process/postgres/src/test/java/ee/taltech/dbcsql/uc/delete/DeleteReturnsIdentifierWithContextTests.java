@@ -37,7 +37,7 @@ public class DeleteReturnsIdentifierWithContextTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			test as a
+			test AS a
 		WHERE
 			a.id = p_id
 		RETURNING

@@ -18,7 +18,7 @@ public class AddCarToCategoryTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			auto_kategooria_omamine as cco
+			auto_kategooria_omamine AS cco
 		(
 			auto_kood,
 			auto_kategooria_kood
@@ -27,9 +27,9 @@ public class AddCarToCategoryTests extends SampleDataTest
 			a.auto_kood,
 			ci.auto_kategooria_kood
 		FROM
-			auto as a,
-			auto_kategooria as ci,
-			auto_seisundi_liik as status
+			auto AS a,
+			auto_kategooria AS ci,
+			auto_seisundi_liik AS status
 		WHERE
 			(
 				a.auto_kood = p_car_id

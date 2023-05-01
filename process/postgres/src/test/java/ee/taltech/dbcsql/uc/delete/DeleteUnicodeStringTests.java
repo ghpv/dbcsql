@@ -33,7 +33,7 @@ public class DeleteUnicodeStringTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.vardata as a
+			public.vardata AS a
 		WHERE
 			a.col_text1 = 'check out my 石橋'
 		;

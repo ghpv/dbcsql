@@ -35,11 +35,11 @@ public class ChainConnectedDeleteTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.chain_a as a
+			public.chain_a AS a
 		USING
-			public.chain_d as d,
-			public.chain_b as chain_b,
-			public.chain_c as chain_c
+			public.chain_d AS d,
+			public.chain_b AS chain_b,
+			public.chain_c AS chain_c
 		WHERE
 			(
 				d.data = 'test'

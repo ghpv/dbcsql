@@ -39,7 +39,7 @@ public class UpdateLinkToRenamedColumnTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			vardata as a
+			vardata AS a
 		SET
 			col_int2 = a.col_int1
 		WHERE

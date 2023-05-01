@@ -33,6 +33,15 @@ public class ModelTranslator
 			.translatePostconditionsToStatementsAndResolveReturnType(contract, func)
 			.resolveSearchPath(contract, func)
 		;
+		if (contract.getComment().isPresent())
+		{
+			String comm = contract
+				.getComment()
+				.get()
+				.replaceAll("\\\\'", "''")
+			;
+			func.withComment(comm);
+		}
 
 		return func.build();
 	}

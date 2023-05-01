@@ -40,7 +40,7 @@ public class SimpleInsertTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		INSERT INTO
-			public.test as a
+			public.test AS a
 		(
 			id,
 			data

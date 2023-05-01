@@ -33,7 +33,7 @@ public class DeleteInTests extends UseCaseTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		DELETE FROM
-			public.vardata as a
+			public.vardata AS a
 		WHERE
 			a.col_int1 in (-5, 5)
 		;

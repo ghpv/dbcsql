@@ -4,7 +4,7 @@ import CommonLex, RestrictionExpr;
 // RULES
 init: contract;
 
-contract: headerDecl preconditionDecl postconditionDecl ';'?
+contract: headerDecl preconditionDecl postconditionDecl commentDecl? ';'?
 ;
 
 headerDecl: 'operation' func_name=ID argList
@@ -14,6 +14,9 @@ preconditionDecl: 'preconditions' preconditionList
 ;
 
 postconditionDecl: 'postconditions' postconditionList
+;
+
+commentDecl: 'comment' STRING
 ;
 
 argList: '{' (arg ';')* '}'

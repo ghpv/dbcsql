@@ -28,7 +28,7 @@ public class ModifyCarTests extends SampleDataTest
 	SET SEARCH_PATH TO 'public', 'pg_temp'
 	BEGIN ATOMIC
 		UPDATE
-			auto as a
+			auto AS a
 		SET
 			auto_kood = p_car_id_new,
 			nimetus = p_name,
@@ -41,9 +41,9 @@ public class ModifyCarTests extends SampleDataTest
 			auto_kytuse_liik_kood = akl.auto_kytuse_liik_kood,
 			auto_mark_kood = am.auto_mark_kood
 		FROM
-			auto_seisundi_liik as status,
-			auto_kytuse_liik as akl,
-			auto_mark as am
+			auto_seisundi_liik AS status,
+			auto_kytuse_liik AS akl,
+			auto_mark AS am
 		WHERE
 			(
 				status.nimetus in ('Ootel', 'Mitteaktiivne')

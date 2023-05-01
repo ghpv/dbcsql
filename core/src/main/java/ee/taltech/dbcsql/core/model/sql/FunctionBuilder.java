@@ -69,6 +69,12 @@ public class FunctionBuilder
 		return this;
 	}
 
+	public FunctionBuilder withComment(String comment)
+	{
+		this.data.setComment(comment);
+		return this;
+	}
+
 	public Function build()
 	{
 		return this.data;
