@@ -40,8 +40,8 @@
 						<phase>validate</phase>
 						<configuration>
 							<tasks>
-								<unzip src="./files/OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.zip" dest="target/linux_jdk"/>
-								<unzip src="./files/OpenJDK17U-jdk_x64_windows_hotspot_17.0.6_10.zip" dest="target/windows_jdk"/>
+								<unzip src="./files/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.zip" dest="target/linux_jdk"/>
+								<unzip src="./files/OpenJDK18U-jdk_x64_windows_hotspot_18.0.2.1_1.zip" dest="target/windows_jdk"/>
 							</tasks>
 						</configuration>
 						<goals>

@@ -124,6 +124,7 @@ postconditions
 	POSTCONDITION return RETURN_VALUE;
 	...
 }
+comment 'SQL comment with escaped '' quote'
 ```
 
 The `OPERATION_NAME` is a name of the operation.
