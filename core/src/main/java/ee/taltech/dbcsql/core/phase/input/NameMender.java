@@ -8,6 +8,7 @@ public class NameMender
 	private String name;
 	private String prefix = "";
 	private boolean verifySQLKeywords = true;
+	private boolean disallowSQLKeywords = false;
 	private static final Set<String> SPECIAL_NAMES = Set.of(
 		"_identifier"
 	);
@@ -855,6 +856,11 @@ public class NameMender
 		this.verifySQLKeywords = b;
 	}
 
+	public void setDisallowSQLKeywords(boolean b)
+	{
+		this.disallowSQLKeywords = b;
+	}
+
 	public String mendName(String name) throws NameMenderException
 	{
 		if (SPECIAL_NAMES.contains(name))
@@ -882,6 +888,10 @@ public class NameMender
 	{
 		this.name = this
 			.name
+			.replaceAll("Õ", "O")
+			.replaceAll("Ä", "A")
+			.replaceAll("Ö", "O")
+			.replaceAll("Ü", "Y")
 			.replaceAll("õ", "o")
 			.replaceAll("ä", "a")
 			.replaceAll("ö", "o")
@@ -947,7 +957,7 @@ public class NameMender
 
 		if (this.startsWithDigit(this.name))
 		{
-			throw new NameMenderException("Name may not start with digit if there is no prefix");
+			this.name = "_" + this.name;
 		}
 		return this;
 	}
@@ -983,7 +993,11 @@ public class NameMender
 
 	private NameMender verifyNotKeyword()
 	{
-		if (this.isVerifySQLKeyword() && this.isSQLKeyword())
+		if (this.isSQLKeyword() && this.isDisallowSQLKeywords())
+		{
+			this.name = this.prefix + "_" + this.name;
+		}
+		if (this.isSQLKeyword() && this.isVerifySQLKeywords())
 		{
 			throw new NameMenderException("May not use SQL keywords: " + this.name);
 		}
@@ -995,9 +1009,14 @@ public class NameMender
 		return SQL_KEYWORDS.contains(this.name);
 	}
 
-	private boolean isVerifySQLKeyword()
+	private boolean isVerifySQLKeywords()
 	{
 		return this.verifySQLKeywords;
+	}
+
+	private boolean isDisallowSQLKeywords()
+	{
+		return this.disallowSQLKeywords;
 	}
 
 	private boolean hasPrefix()

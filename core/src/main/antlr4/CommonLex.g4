@@ -1,10 +1,7 @@
 lexer grammar CommonLex;
 
-fragment CHAR: [a-zA-Z];
-fragment EST_ONLY_CHAR: [õäöüÕÄÖÜ];
 fragment DIGIT: [0-9];
 fragment INT: DIGIT+;
-fragment EST_CHAR: (CHAR | EST_ONLY_CHAR);
 
 NUMBER: INT
 	| INT '.' INT?
@@ -14,10 +11,10 @@ SINGLE_QUOTE: '\'';
 SINGLE_DQUOTE: '"';
 STRING: SINGLE_QUOTE ('\\\'' | ~['])* SINGLE_QUOTE;
 
-fragment ID_START: (EST_CHAR | '_');
-fragment ID_END: (EST_CHAR | DIGIT | '_');
-ID: ID_START ID_END*
-	| SINGLE_DQUOTE ID_START (ID_END | ' ')* SINGLE_DQUOTE
+
+fragment UTF8: [\p{Alnum}\p{General_Category=Other_Letter}_];
+ID: UTF8*
+	| SINGLE_DQUOTE UTF8 (UTF8 | ' ')* SINGLE_DQUOTE
 ;
 
 // Ignored

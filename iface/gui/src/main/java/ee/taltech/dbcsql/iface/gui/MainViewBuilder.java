@@ -45,8 +45,8 @@ public class MainViewBuilder
 		this.contextView = makeContextView();
 		this.contractView = makeContractView();
 		this.outputView = makeOutputView();
-		this.argPrefix.setPromptText("Argument prefix");
-		this.opPrefix.setPromptText("Operation prefix");
+		this.argPrefix.setPromptText("Parameter name prefix");
+		this.opPrefix.setPromptText("Function name prefix");
 		grid.addRow(
 			0,
 			this.contextView,

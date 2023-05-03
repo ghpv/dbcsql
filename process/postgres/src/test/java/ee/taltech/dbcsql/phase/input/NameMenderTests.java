@@ -26,7 +26,7 @@ public class NameMenderTests
 		return new Object[][]
 		{
 			{"", "wow", "wow", "normal translation"},
-			{"", "wowõäöü", "wowoaoy", "estonian must be changed"},
+			{"", "wowõäöüÕÄÖÜ", "wowoaoy_oaoy", "estonian must be changed"},
 			{"", "no spaces", "no_spaces", "spaces must be changed to underscores"},
 			{"", "no spaces nameõäöü", "no_spaces_nameoaoy", "estonian must be changed, spaces changed to underscore"},
 			{"", "noCamelCase", "no_camel_case", "camelCase must be changed to snake_case"},
@@ -39,6 +39,8 @@ public class NameMenderTests
 			{"p", "p_code", "p_p_code", "do not check for prefixes"},
 			{"p", "pin", "p_pin", "do not check for prefixes"},
 			{"f", "Operation name", "f_operation_name", "lowercase operation name"},
+			{"", "0", "_0", "no prefix just gets underscore"},
+			{"", "愛と罰0", "_0", "no prefix gets underscore"},
 		};
 	}
 
@@ -58,8 +60,6 @@ public class NameMenderTests
 			{"", "", "empty is not permitted"},
 			{"p", "", "empty is not permitted"},
 			{"p", "愛と罰", "empty is not permitted"},
-			{"", "0", "must not start with a digit"},
-			{"", "愛と罰0", "must not start with a digit"},
 			{"AZ", "wow", "prefix may contain only [a-z]"},
 			{"0", "wow", "prefix may not start with digit"},
 		};

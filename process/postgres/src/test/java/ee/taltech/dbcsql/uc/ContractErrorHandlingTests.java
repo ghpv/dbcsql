@@ -21,7 +21,7 @@ public class ContractErrorHandlingTests extends UseCaseTest
 				"""
 				"""
 				,
-				"line 1:0 mismatched input '<EOF>' expecting 'operation'"
+				"line 1:0 missing 'operation' at '<EOF>'"
 			},
 			{
 				"""

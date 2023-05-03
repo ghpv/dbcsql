@@ -23,6 +23,7 @@ public class GenerationContext
 
 	protected GenerationContext()
 	{
+		this.functionMender.setDisallowSQLKeywords(true);
 	}
 
 	public TargetPlatform getPlatform()
