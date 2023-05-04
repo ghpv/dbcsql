@@ -1,4 +1,4 @@
-package ee.taltech.dbcsql.core.model.dsl.argument.resolution;
+package ee.taltech.dbcsql.core.model.dsl.parameter.resolution;
 
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.ExpressionNode;
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.RestrictionExpressionNodeVisitor;
@@ -6,11 +6,11 @@ import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.comparison.C
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.composite.CompositeExpressionNode;
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.unary.UnaryExpressionNode;
 
-public class ArgumentRestrictionExpressionVisitor implements RestrictionExpressionNodeVisitor<Void>
+public class ParameterRestrictionExpressionVisitor implements RestrictionExpressionNodeVisitor<Void>
 {
-	private ArgumentResolver resolver;
+	private ParameterResolver resolver;
 
-	public ArgumentRestrictionExpressionVisitor(ArgumentResolver resolver)
+	public ParameterRestrictionExpressionVisitor(ParameterResolver resolver)
 	{
 		this.resolver = resolver;
 	}

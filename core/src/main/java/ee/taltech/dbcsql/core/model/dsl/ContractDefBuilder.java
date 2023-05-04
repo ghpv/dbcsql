@@ -4,7 +4,7 @@ public class ContractDefBuilder extends ContractDefBuilderBase<ContractDefBuilde
 {
 	public ContractDef build()
 	{
-		this.data.resolveArgumentTypes();
+		this.data.resolveParameterTypes();
 		return this.data;
 	}
 }

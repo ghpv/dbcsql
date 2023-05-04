@@ -26,7 +26,7 @@ public class GenerationRequestBuilder
 
 	public GenerationRequestBuilder withContract(ContractDef contract)
 	{
-		contract.resolveArgumentTypes();
+		contract.resolveParameterTypes();
 		this.data.contracts.add(contract);
 		return this;
 	}

@@ -3,7 +3,7 @@ delimiters "$", "$"
 func(d) ::= <<
 CREATE OR REPLACE FUNCTION $d.name$
 (
-	$d.args;separator=",\n"$
+	$d.params;separator=",\n"$
 )
 RETURNS $d.returnType$
 LANGUAGE SQL SECURITY $if(d.securityInvoker)$INVOKER$else$DEFINER$endif$
@@ -14,7 +14,7 @@ END;
 $if(d.comment)$
 COMMENT ON FUNCTION $d.name$
 (
-	$d.args;separator=",\n"$
+	$d.params;separator=",\n"$
 )
 IS $d.comment$;
 $endif$

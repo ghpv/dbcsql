@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ee.taltech.dbcsql.core.model.dsl.ContractDef;
-import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDef;
+import ee.taltech.dbcsql.core.model.dsl.parameter.ParameterDef;
 import ee.taltech.dbcsql.core.model.dsl.post.PostconditionDef;
 import ee.taltech.dbcsql.core.model.dsl.pre.PreconditionDef;
 import ee.taltech.dbcsql.core.model.sql.Function;
@@ -29,7 +29,7 @@ public class ModelTranslator
 		func.withSecurityInvoker(this.context.getSecurityInvoker());
 
 		this
-			.translateArguments(contract, func)
+			.translateParameters(contract, func)
 			.translatePostconditionsToStatementsAndResolveReturnType(contract, func)
 			.resolveSearchPath(contract, func)
 		;
@@ -46,13 +46,13 @@ public class ModelTranslator
 		return func.build();
 	}
 
-	private ModelTranslator translateArguments(ContractDef contract, FunctionBuilder func)
+	private ModelTranslator translateParameters(ContractDef contract, FunctionBuilder func)
 	{
 		contract
-			.getArguments()
+			.getParameters()
 			.stream()
-			.map(x -> translateArgument(x))
-			.forEach(x -> func.addArgument(x))
+			.map(x -> translateParameter(x))
+			.forEach(x -> func.addParameter(x))
 		;
 		return this;
 	}
@@ -115,7 +115,7 @@ public class ModelTranslator
 		return this;
 	}
 
-	private String translateArgument(ArgumentDef x)
+	private String translateParameter(ParameterDef x)
 	{
 		return new StringBuilder()
 			.append(x.getAlias())

@@ -16,16 +16,16 @@ public class FunctionComparisonTargetNodeBuilderBase<BuilderT extends FunctionCo
 	}
 
 	@SuppressWarnings("unchecked")
-	public BuilderT addArgument(ComparisonTargetNode arg)
+	public BuilderT addParameter(ComparisonTargetNode param)
 	{
-		this.data.addArgument(arg);
+		this.data.addParameter(param);
 		return (BuilderT) this;
 	}
 
 	@SuppressWarnings("unchecked")
-	public BuilderT withArguments(List<ComparisonTargetNode> arguments)
+	public BuilderT withParameters(List<ComparisonTargetNode> parameters)
 	{
-		this.data.setArguments(arguments);
+		this.data.setParameters(parameters);
 		return (BuilderT) this;
 	}
 }

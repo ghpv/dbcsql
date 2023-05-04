@@ -1,4 +1,4 @@
-package ee.taltech.dbcsql.core.model.dsl.argument.resolution;
+package ee.taltech.dbcsql.core.model.dsl.parameter.resolution;
 
 import java.util.Collection;
 
@@ -8,11 +8,11 @@ import ee.taltech.dbcsql.core.model.dsl.post.deleted.DeletedPostcondition;
 import ee.taltech.dbcsql.core.model.dsl.post.inserted.InsertedPostcondition;
 import ee.taltech.dbcsql.core.model.dsl.post.updated.UpdatedPostcondition;
 
-public class ArgumentPostconditionVisitor implements PostconditionVisitor<Void>
+public class ParameterPostconditionVisitor implements PostconditionVisitor<Void>
 {
-	private ArgumentResolver resolver;
+	private ParameterResolver resolver;
 
-	public ArgumentPostconditionVisitor(ArgumentResolver resolver)
+	public ParameterPostconditionVisitor(ParameterResolver resolver)
 	{
 		this.resolver = resolver;
 	}
@@ -41,7 +41,7 @@ public class ArgumentPostconditionVisitor implements PostconditionVisitor<Void>
 		return null;
 	}
 
-	private ArgumentPostconditionVisitor resolveFromColumnEquality(Collection<ColumnEquality> equalColumns)
+	private ParameterPostconditionVisitor resolveFromColumnEquality(Collection<ColumnEquality> equalColumns)
 	{
 		for (ColumnEquality eq: equalColumns)
 		{

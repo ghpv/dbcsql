@@ -1,15 +1,15 @@
-package ee.taltech.dbcsql.core.model.dsl.argument;
+package ee.taltech.dbcsql.core.model.dsl.parameter;
 
-public class ArgumentDef
+public class ParameterDef
 {
 	private String alias;
 	private String type;
 
-	public ArgumentDef()
+	public ParameterDef()
 	{
 	}
 
-	public ArgumentDef(String alias, String type)
+	public ParameterDef(String alias, String type)
 	{
 		this.setAlias(alias);
 		this.setType(type);

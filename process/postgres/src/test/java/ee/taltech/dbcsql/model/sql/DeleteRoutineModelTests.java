@@ -19,7 +19,7 @@ public class DeleteRoutineModelTests extends IntegrationTest
 				.withContext(this.ctx)
 				.makeContract()
 					.withName("forget_car")
-					.makeArgument()
+					.makeParameter()
 						.withAlias("p_id")
 						.withType("INTEGER")
 					.build()

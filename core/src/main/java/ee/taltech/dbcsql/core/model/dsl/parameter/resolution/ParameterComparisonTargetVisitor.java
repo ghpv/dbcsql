@@ -1,4 +1,4 @@
-package ee.taltech.dbcsql.core.model.dsl.argument.resolution;
+package ee.taltech.dbcsql.core.model.dsl.parameter.resolution;
 
 import java.util.Collection;
 
@@ -8,12 +8,12 @@ import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.comparison.t
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.comparison.tgt.func.FunctionComparisonTargetNode;
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.comparison.tgt.literal.LiteralComparisonTargetNode;
 
-public class ArgumentComparisonTargetVisitor implements ComparisonTargetNodeVisitor<Void>
+public class ParameterComparisonTargetVisitor implements ComparisonTargetNodeVisitor<Void>
 {
-	private ArgumentResolver resolver;
+	private ParameterResolver resolver;
 	private String possibleType;
 
-	public ArgumentComparisonTargetVisitor(String possibleType, ArgumentResolver resolver)
+	public ParameterComparisonTargetVisitor(String possibleType, ParameterResolver resolver)
 	{
 		this.possibleType = possibleType;
 		this.resolver = resolver;
@@ -36,7 +36,7 @@ public class ArgumentComparisonTargetVisitor implements ComparisonTargetNodeVisi
 	@Override
 	public Void visit(FunctionComparisonTargetNode v)
 	{
-		this.visitSubnodes(v.getArguments());
+		this.visitSubnodes(v.getParameters());
 		return null;
 	}
 

@@ -55,7 +55,7 @@ public class DeleteReturningArgumentTests extends UseCaseTest
 			.assertQuery(
 				"select forget_test('not so wow')",
 				List.of(List.of("not so wow")),
-				"Argument must be returned"
+				"Parameter must be returned"
 			)
 			.assertQuery(
 				"select * from test",

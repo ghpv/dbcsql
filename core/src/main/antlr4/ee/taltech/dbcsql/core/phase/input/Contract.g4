@@ -7,7 +7,7 @@ init: contract;
 contract: headerDecl preconditionDecl postconditionDecl commentDecl? ';'?
 ;
 
-headerDecl: 'operation' func_name=ID argList
+headerDecl: 'operation' func_name=ID paramList
 ;
 
 preconditionDecl: 'preconditions' preconditionList
@@ -19,10 +19,11 @@ postconditionDecl: 'postconditions' postconditionList
 commentDecl: 'comment' STRING
 ;
 
-argList: '{' (arg ';')* '}'
+paramList: '{' (param ';')* '}'
 ;
 
-arg: alias=ID // p_car_code
+param: alias=ID // p_car_code
+
 ;
 
 preconditionList: '{' (precondition ';')* '}' // Semicolon separated preconditions

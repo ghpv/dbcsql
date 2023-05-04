@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import ee.taltech.dbcsql.uc.UseCaseTest;
 
-public class DeleteArgumentResolution extends UseCaseTest
+public class DeleteParameterResolution extends UseCaseTest
 {
 	private static final InputStream CONTRACT_STREAM = new ByteArrayInputStream("""
 	operation forget_test

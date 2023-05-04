@@ -28,8 +28,8 @@ public class Main
 	@Parameter(names = { "-ir", "--implicit-return" }, description = "Have the last operation return identifier")
 	private boolean implicitReturn = true;
 
-	@Parameter(names = { "-ap", "--argument-prefix" }, description = "Argument prefix")
-	private String argumentPrefix = "";
+	@Parameter(names = { "-ap", "--parameter-prefix" }, description = "Parameter prefix")
+	private String parameterPrefix = "";
 
 	@Parameter(names = { "-op", "--operation-prefix" }, description = "Operation prefix")
 	private String operationPrefix = "";
@@ -61,7 +61,7 @@ public class Main
 					.withSecurityInvoker(invoker)
 					.withReturnOnLastPostcondition(implicitReturn)
 					.withFunctionPrefix(operationPrefix)
-					.withArgumentPrefix(argumentPrefix)
+					.withParameterPrefix(parameterPrefix)
 				.build()
 				.withContractStream(streamFile(contractFile))
 			.finishInput()

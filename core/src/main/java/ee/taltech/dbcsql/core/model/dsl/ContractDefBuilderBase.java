@@ -2,8 +2,8 @@ package ee.taltech.dbcsql.core.model.dsl;
 
 import java.util.List;
 
-import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDef;
-import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDefBuilderBase;
+import ee.taltech.dbcsql.core.model.dsl.parameter.ParameterDef;
+import ee.taltech.dbcsql.core.model.dsl.parameter.ParameterDefBuilderBase;
 import ee.taltech.dbcsql.core.model.dsl.post.PostconditionDef;
 import ee.taltech.dbcsql.core.model.dsl.post.deleted.DeletedPostconditionBuilderBase;
 import ee.taltech.dbcsql.core.model.dsl.post.inserted.InsertedPostconditionBuilderBase;
@@ -24,38 +24,38 @@ public class ContractDefBuilderBase<BuilderT extends ContractDefBuilderBase<Buil
 	}
 
 	@SuppressWarnings("unchecked")
-	public BuilderT withArguments(List<ArgumentDef> arguments)
+	public BuilderT withParameters(List<ParameterDef> parameters)
 	{
-		this.data.setArguments(arguments);
+		this.data.setParameters(parameters);
 		return (BuilderT) this;
 	}
 
 	@SuppressWarnings("unchecked")
-	public BuilderT withArgument(ArgumentDef argument)
+	public BuilderT withParameter(ParameterDef parameter)
 	{
-		this.data.addArgument(argument);
+		this.data.addParameter(parameter);
 		return (BuilderT) this;
 	}
 
-	public class ArgumentDefSubBuilder extends ArgumentDefBuilderBase<ArgumentDefSubBuilder>
+	public class ParameterDefSubBuilder extends ParameterDefBuilderBase<ParameterDefSubBuilder>
 	{
 		BuilderT owner;
-		public ArgumentDefSubBuilder(BuilderT owner)
+		public ParameterDefSubBuilder(BuilderT owner)
 		{
 			this.owner = owner;
 		}
 
 		public BuilderT build()
 		{
-			this.owner.withArgument(this.data);
+			this.owner.withParameter(this.data);
 			return this.owner;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArgumentDefSubBuilder makeArgument()
+	public ParameterDefSubBuilder makeParameter()
 	{
-		return new ArgumentDefSubBuilder((BuilderT) this);
+		return new ParameterDefSubBuilder((BuilderT) this);
 	}
 
 	@SuppressWarnings("unchecked")

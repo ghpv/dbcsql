@@ -10,7 +10,7 @@ import ee.taltech.dbcsql.core.model.dsl.restriction.expression.node.comparison.t
 public class FunctionComparisonTargetNode implements ComparisonTargetNode
 {
 	private String function;
-	private List<ComparisonTargetNode> arguments = new LinkedList<>();
+	private List<ComparisonTargetNode> parameters = new LinkedList<>();
 
 	public FunctionComparisonTargetNode()
 	{
@@ -36,19 +36,19 @@ public class FunctionComparisonTargetNode implements ComparisonTargetNode
 		return this.function;
 	}
 
-	public List<ComparisonTargetNode> getArguments()
+	public List<ComparisonTargetNode> getParameters()
 	{
-		return arguments;
+		return parameters;
 	}
 
-	public void addArgument(ComparisonTargetNode arg)
+	public void addParameter(ComparisonTargetNode param)
 	{
-		this.arguments.add(arg);
+		this.parameters.add(param);
 	}
 
-	public void setArguments(List<ComparisonTargetNode> arguments)
+	public void setParameters(List<ComparisonTargetNode> parameters)
 	{
-		this.arguments = arguments;
+		this.parameters = parameters;
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class FunctionComparisonTargetNode implements ComparisonTargetNode
 		FunctionComparisonTargetNode other = (FunctionComparisonTargetNode) obj;
 		return true
 			&& this.function.equals(other.function)
-			&& this.arguments.equals(other.arguments)
+			&& this.parameters.equals(other.parameters)
 		;
 	}
 
@@ -70,7 +70,7 @@ public class FunctionComparisonTargetNode implements ComparisonTargetNode
 	{
 		return Objects.hash(
 			this.function,
-			this.arguments.hashCode()
+			this.parameters.hashCode()
 		);
 	}
 

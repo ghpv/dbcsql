@@ -11,7 +11,7 @@ public class GenericFunctionReturnTypeResolver extends FunctionReturnTypeResolve
 			.addPattern(new FunctionReturnTypeFromColumnPattern())
 			.addPattern(new FunctionReturnTypeIntegerPattern())
 			.addPattern(new FunctionReturnTypeVarcharPattern())
-			.addPattern(new FunctionReturnTypeArgumentPattern(contract.getArguments()))
+			.addPattern(new FunctionReturnTypeParameterPattern(contract.getParameters()))
 		;
 	}
 }

@@ -110,12 +110,12 @@ subgraph cluster_1543431499 {
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentComparisonTargetVisitor1268088010[
+ParameterComparisonTargetVisitor1268088010[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentComparisonTargetVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterComparisonTargetVisitor</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   possibleType: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolver: ParameterResolver [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ visit(v: CompositeComparisonTargetNode): Void</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(v: LiteralComparisonTargetNode): Void</TD></TR>
@@ -128,9 +128,9 @@ ArgumentComparisonTargetVisitor1268088010[
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentDef1798038948[
+ParameterDef1798038948[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentDef</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterDef</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   alias: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
@@ -141,13 +141,13 @@ ArgumentDef1798038948[
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentPostconditionVisitor1268088010[
+ParameterPostconditionVisitor1268088010[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentPostconditionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterPostconditionVisitor</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolver: ParameterResolver [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >- resolveFromColumnEquality(equalColumns: Collection&lt;ColumnEquality&gt;): ArgumentPostconditionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >- resolveFromColumnEquality(equalColumns: Collection&lt;ColumnEquality&gt;): ParameterPostconditionVisitor</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(c: DeletedPostcondition): Void</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(c: InsertedPostcondition): Void</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(c: UpdatedPostcondition): Void</TD></TR>
@@ -158,11 +158,11 @@ ArgumentPostconditionVisitor1268088010[
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentPreconditionVisitor1268088010[
+ParameterPreconditionVisitor1268088010[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentPreconditionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterPreconditionVisitor</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolver: ParameterResolver [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ visit(c: ExistsPrecondition): Void</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(c: ConnectionPrecondition): Void</TD></TR>
@@ -173,19 +173,19 @@ ArgumentPreconditionVisitor1268088010[
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentResolver1268088010[
+ParameterResolver1268088010[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterResolver</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+   argRef: Map&lt;String, ArgumentDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   argRef: Map&lt;String, ParameterDef&gt; [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ addArgumentReference(arg: ArgumentDef)</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(eq: ColumnEquality): ArgumentResolver</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(expr: ComparisonExpressionNode): ArgumentResolver</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(targettedColumn: ColumnDef, values: Collection&lt;ComparisonTargetNode&gt;): ArgumentResolver</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, compTarget: ComparisonTargetNode): ArgumentResolver</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argumentStr: String): ArgumentResolver</TD></TR>
-<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argument: ArgumentDef): ArgumentResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addParameterReference(arg: ParameterDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(eq: ColumnEquality): ParameterResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(expr: ComparisonExpressionNode): ParameterResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(targettedColumn: ColumnDef, values: Collection&lt;ComparisonTargetNode&gt;): ParameterResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, compTarget: ComparisonTargetNode): ParameterResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argumentStr: String): ParameterResolver</TD></TR>
+<TR><TD ALIGN="LEFT" >+ consider(possibleType: String, argument: ParameterDef): ParameterResolver</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -193,11 +193,11 @@ ArgumentResolver1268088010[
 	fillcolor="#FFFFFF"
 ];
 
-ArgumentRestrictionVisitor1268088010[
+ParameterRestrictionVisitor1268088010[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)ArgumentRestrictionVisitor</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ParameterRestrictionVisitor</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   resolver: ArgumentResolver [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   resolver: ParameterResolver [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ visit(r: ConnectionRestriction): Void</TD></TR>
 <TR><TD ALIGN="LEFT" >+ visit(r: ExpressionRestriction): Void</TD></TR>
@@ -530,15 +530,15 @@ ContractDef1239972057[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)ContractDef</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   arguments: List&lt;ArgumentDef&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   arguments: List&lt;ParameterDef&gt; [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   postconditions: List&lt;PostconditionDef&gt; [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   preconditions: List&lt;PreconditionDef&gt; [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ addArgument(argument: ArgumentDef)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addParameter(argument: ParameterDef)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ addPostcondition(condition: PostconditionDef)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ addPrecondition(condition: PreconditionDef)</TD></TR>
-<TR><TD ALIGN="LEFT" >+ resolveArgumentTypes()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resolveParameterTypes()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -832,7 +832,7 @@ FunctionComparisonTargetNode2044428087[
 <TR><TD ALIGN="LEFT" >-   function: String [0..1]</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ accept(visitor: ComparisonTargetNodeVisitor&lt;T&gt;): T</TD></TR>
-<TR><TD ALIGN="LEFT" >+ addArgument(arg: ComparisonTargetNode)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addParameter(arg: ComparisonTargetNode)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ clone(): FunctionComparisonTargetNode</TD></TR>
 </TABLE>>
 	style=filled
@@ -1521,14 +1521,14 @@ VariableRegistry2138134883[
 } 
 
 'edges    
-ArgumentPostconditionVisitor1268088010 -> ArgumentResolver1268088010[label="resolver
+ParameterPostconditionVisitor1268088010 -> ParameterResolver1268088010[label="resolver
 [0..1]"];
-ArgumentResolver1268088010 -> ArgumentDef1798038948[label="argRef
+ParameterResolver1268088010 -> ParameterDef1798038948[label="argRef
 [0..1]"];
-ArgumentResolver1268088010 -> CompositeComparisonTargetNode1205659124[arrowhead=none];
-ArgumentResolver1268088010 -> FunctionComparisonTargetNode2044428087[arrowhead=none];
-ArgumentResolver1268088010 -> LiteralComparisonTargetNode681866404[arrowhead=none];
-ArgumentResolver1268088010 -> TableDef1009830444[label="consider() -> getColumn()"];
+ParameterResolver1268088010 -> CompositeComparisonTargetNode1205659124[arrowhead=none];
+ParameterResolver1268088010 -> FunctionComparisonTargetNode2044428087[arrowhead=none];
+ParameterResolver1268088010 -> LiteralComparisonTargetNode681866404[arrowhead=none];
+ParameterResolver1268088010 -> TableDef1009830444[label="consider() -> getColumn()"];
 CompositeNode29133328 -> CompositeComparisonTargetNode1205659124[arrowhead=none, arrowtail=empty, dir=both];
 ConditionToRestrictionTranslator600907574 -> PostcondtionToRestrictionVisitor600907574[arrowhead=none, arrowtail=empty, dir=both];
 ConditionToRestrictionTranslator600907574 -> TargettedPostcondtionToRestrictionVisitor600907574[arrowhead=none, arrowtail=empty, dir=both];
@@ -1537,7 +1537,7 @@ ConnectionPrecondition1962707792 -> VariableDef2138134883[label="a
 [0..1]"];
 ConnectionPrecondition1962707792 -> VariableDef2138134883[label="b
 [0..1]"];
-ConnectionRestriction1950000921 -> ArgumentRestrictionVisitor1268088010[arrowhead=none];
+ConnectionRestriction1950000921 -> ParameterRestrictionVisitor1268088010[arrowhead=none];
 ConnectionRestriction1950000921 -> DeletedRestrictionTranslator600907574[arrowhead=none];
 ConnectionRestriction1950000921 -> InsertedRestrictionTranslator600907574[arrowhead=none];
 ConnectionRestriction1950000921 -> UpdatedRestrictionTranslator600907574[arrowhead=none];
@@ -1545,9 +1545,9 @@ ConnectionRestriction1950000921 -> VariableDef2138134883[label="a
 [0..1]"];
 ConnectionRestriction1950000921 -> VariableDef2138134883[label="b
 [0..1]"];
-ContractDef1239972057 -> ArgumentDef1798038948[label="arguments
+ContractDef1239972057 -> ParameterDef1798038948[label="arguments
 [0..1]"];
-ContractDef1239972057 -> ArgumentResolver1268088010[label="resolveArgumentTypes() -> addArgumentReference()"];
+ContractDef1239972057 -> ParameterResolver1268088010[label="resolveParameterTypes() -> addParameterReference()"];
 ContractDef1239972057 -> ConnectionPrecondition1962707792[arrowhead=none];
 ContractDef1239972057 -> DeletedPostcondition1085469746[arrowhead=none];
 ContractDef1239972057 -> ExistsPrecondition400335662[arrowhead=none];
@@ -1627,7 +1627,7 @@ InsertedPostcondition988101601 -> VariableDef2138134883[label="target
 [0..1]"];
 InsertedPostcondition988101601 -> VariableLink600746759[label="linkedVariables
 [0..1]"];
-LiteralComparisonTargetNode681866404 -> ArgumentComparisonTargetVisitor1268088010[arrowhead=none];
+LiteralComparisonTargetNode681866404 -> ParameterComparisonTargetVisitor1268088010[arrowhead=none];
 LiteralComparisonTargetNode681866404 -> ComparisonTargetNodeCompositor864757147[arrowhead=none];
 LiteralComparisonTargetNode681866404 -> ComparisonTargetNodePreprocessorVisitor600907574[arrowhead=none];
 LiteralComparisonTargetNode681866404 -> ComparisonTargetNodeStringifierVisitor600907574[arrowhead=none];
@@ -1661,7 +1661,7 @@ RestrictionRegistry1150469947 -> RestrictionDef1092956283[label="data
 [0..1]"];
 ReturnValue600746759 -> ColumnDef1009830444[label="column
 [0..1]"];
-SearchPathResolverRestrictionVisitor600907574 -> ArgumentPreconditionVisitor1268088010[arrowhead=none];
+SearchPathResolverRestrictionVisitor600907574 -> ParameterPreconditionVisitor1268088010[arrowhead=none];
 SearchPathResolverRestrictionVisitor600907574 -> DatabaseDef1009830444[label="db
 [0..1]"];
 SearchPathResolverRestrictionVisitor600907574 -> PrecondtionToRestrictionVisitor600907574[arrowhead=none];
@@ -1681,7 +1681,7 @@ TableDef1009830444 -> PKey1009830444[label="identifier
 [0..1]"];
 TargettedPostcondtionToRestrictionVisitor600907574 -> VariableDef2138134883[label="currentVariable
 [0..1]"];
-UpdatedPostcondition699423532 -> ArgumentPostconditionVisitor1268088010[arrowhead=none];
+UpdatedPostcondition699423532 -> ParameterPostconditionVisitor1268088010[arrowhead=none];
 UpdatedPostcondition699423532 -> ColumnEquality1009830444[label="values
 [0..1]"];
 UpdatedPostcondition699423532 -> PostconditionTranslator600907574[arrowhead=none];

@@ -4,16 +4,16 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDef;
+import ee.taltech.dbcsql.core.model.dsl.parameter.ParameterDef;
 import ee.taltech.dbcsql.core.model.dsl.post.ReturnValue;
 
-public class FunctionReturnTypeArgumentPattern implements FunctionReturnTypePattern
+public class FunctionReturnTypeParameterPattern implements FunctionReturnTypePattern
 {
 	private Map<String, String> typage = new HashMap<>();
 
-	public FunctionReturnTypeArgumentPattern(Collection<ArgumentDef> args)
+	public FunctionReturnTypeParameterPattern(Collection<ParameterDef> params)
 	{
-		args
+		params
 			.forEach(x -> this.typage.put(x.getAlias(), x.getType()))
 		;
 	}

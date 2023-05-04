@@ -110,9 +110,9 @@ public class GenerationContextBaseBuilder<BuilderT extends GenerationContextBase
 
 
 	@SuppressWarnings("unchecked")
-	public BuilderT withArgumentPrefix(String pfx)
+	public BuilderT withParameterPrefix(String pfx)
 	{
-		this.data.getArgumentMender().setPrefix(pfx);
+		this.data.getParameterMender().setPrefix(pfx);
 		return (BuilderT) this;
 	}
 

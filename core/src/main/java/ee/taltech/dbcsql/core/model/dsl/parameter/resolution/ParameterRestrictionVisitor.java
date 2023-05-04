@@ -1,14 +1,14 @@
-package ee.taltech.dbcsql.core.model.dsl.argument.resolution;
+package ee.taltech.dbcsql.core.model.dsl.parameter.resolution;
 
 import ee.taltech.dbcsql.core.model.dsl.restriction.RestrictionVisitor;
 import ee.taltech.dbcsql.core.model.dsl.restriction.connection.ConnectionRestriction;
 import ee.taltech.dbcsql.core.model.dsl.restriction.expression.ExpressionRestriction;
 
-public class ArgumentRestrictionVisitor implements RestrictionVisitor<Void>
+public class ParameterRestrictionVisitor implements RestrictionVisitor<Void>
 {
-	private ArgumentResolver resolver;
+	private ParameterResolver resolver;
 
-	public ArgumentRestrictionVisitor(ArgumentResolver resolver)
+	public ParameterRestrictionVisitor(ParameterResolver resolver)
 	{
 		this.resolver = resolver;
 	}
@@ -22,7 +22,7 @@ public class ArgumentRestrictionVisitor implements RestrictionVisitor<Void>
 	@Override
 	public Void visit(ExpressionRestriction r)
 	{
-		r.getNode().accept(new ArgumentRestrictionExpressionVisitor(this.resolver));
+		r.getNode().accept(new ParameterRestrictionExpressionVisitor(this.resolver));
 		return null;
 	}
 }

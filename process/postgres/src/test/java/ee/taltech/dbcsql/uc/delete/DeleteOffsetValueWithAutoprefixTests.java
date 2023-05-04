@@ -46,7 +46,7 @@ public class DeleteOffsetValueWithAutoprefixTests extends UseCaseTest
 	@Override
 	protected void extraOperationsOnContext(GenerationContextSubBuilder contextBuilder)
 	{
-		contextBuilder.withArgumentPrefix("p");
+		contextBuilder.withParameterPrefix("p");
 		super.extraOperationsOnContext(contextBuilder);
 	}
 

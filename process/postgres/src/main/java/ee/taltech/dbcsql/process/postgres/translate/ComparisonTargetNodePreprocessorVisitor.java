@@ -41,7 +41,7 @@ public class ComparisonTargetNodePreprocessorVisitor implements ComparisonTarget
 	@Override
 	public Void visit(FunctionComparisonTargetNode v)
 	{
-		this.processSubnodes(v.getArguments());
+		this.processSubnodes(v.getParameters());
 		return null;
 	}
 

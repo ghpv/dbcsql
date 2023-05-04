@@ -69,7 +69,7 @@ public class ContractErrorHandlingTests extends UseCaseTest
 				}
 				"""
 				,
-				"Argument 'p_id' was already given!"
+				"Parameter 'p_id' was already given!"
 			},
 			{
 				"""

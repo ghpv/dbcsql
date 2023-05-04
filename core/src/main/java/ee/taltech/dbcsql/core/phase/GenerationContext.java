@@ -18,7 +18,7 @@ public class GenerationContext
 	protected DBCommands database;
 	protected boolean returnLastPostcondition = false;
 	protected boolean securityInvoker = false;
-	protected NameMender argumentMender = new NameMender();
+	protected NameMender parameterMender = new NameMender();
 	protected NameMender functionMender = new NameMender();
 
 	protected GenerationContext()
@@ -68,13 +68,13 @@ public class GenerationContext
 		return this.securityInvoker;
 	}
 
-	public NameMender getArgumentMender()
+	public NameMender getParameterMender()
 	{
-		return this.argumentMender;
+		return this.parameterMender;
 	}
-	public void setArgumentMender(NameMender mender)
+	public void setParameterMender(NameMender mender)
 	{
-		this.argumentMender = mender;
+		this.parameterMender = mender;
 	}
 
 	public NameMender getFunctionMender()

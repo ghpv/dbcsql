@@ -1,8 +1,8 @@
-package ee.taltech.dbcsql.core.model.dsl.argument;
+package ee.taltech.dbcsql.core.model.dsl.parameter;
 
-public class ArgumentDefBuilderBase<BuilderT extends ArgumentDefBuilderBase<BuilderT>>
+public class ParameterDefBuilderBase<BuilderT extends ParameterDefBuilderBase<BuilderT>>
 {
-	protected ArgumentDef data = new ArgumentDef();
+	protected ParameterDef data = new ParameterDef();
 
 	@SuppressWarnings("unchecked")
 	public BuilderT withAlias(String alias)

@@ -40,11 +40,11 @@ Every single entry (i.e. the table name and column names) can have separate name
 `DSL_NAME` is used within the contract, whereas `DB_NAME` is used within the database.
 In case these names are equal it is possible to supply one name (i.e. skip the `= DB_NAME` part).
 
-`DATA_TYPE` is used to describe what kind of data type should be given to an _argument_ of the operation, if it applies to this column (e.g. if you have an argument that is used to update this column, its type should be equal to that column).
-Note that this is strictly about _arguments_ and _not_ the columns in the table.
+`DATA_TYPE` is used to describe what kind of data type should be given to a _parameter_ of the operation, if it applies to this column (e.g. if you have a parameter that is used to update this column, its type should be equal to that column).
+Note that this is strictly about _parameter_ and _not_ the columns in the table.
 So, for example, if one has a `CHARACTER VARYING (50)` column the correct datatype for it is `VARCHAR`, not `CHARACTER VARYING`.
 Similarly, for `NUMERIC` and other sized data one should not supply the sizing. (So use `NUMERIC` and _not_ `NUMERIC(5, 3)`)
-The `DATA_TYPE` should be a single non-spaced "word", it is not processed in any way, but is instead directly passed as an argument type where applicable.
+The `DATA_TYPE` should be a single non-spaced "word", it is not processed in any way, but is instead directly passed as a parameter type where applicable.
 
 This descriptor should include every single column that the contracts should be aware of, this includes also _referenced fields_, such as foreign keys.
 
@@ -101,7 +101,7 @@ In case it is supplied it can be used to define precisely which key is to be use
 ## Contract
 
 **Contract** is used to describe the operation in its "design-by-contract" form.
-Here, the "design-by-contract" form is precisely defined as arguments, preconditions and postconditions of the operation.
+Here, the "design-by-contract" form is precisely defined as parameters, preconditions and postconditions of the operation.
 It is also required that if the operation is called and preconditions hold, the operation should perform some actions in order to satisfy the postconditions.
 
 These contracts can be defined during the analysis of some software system on the analysis-level models.
@@ -111,7 +111,7 @@ Below is the high-level syntax of a contract:
 ```txt
 operation OPERATION_NAME
 {
-	argument_name1;
+	parameter_name1;
 	...
 }
 preconditions
@@ -131,10 +131,10 @@ The `OPERATION_NAME` is a name of the operation.
 It is recommended to supply it as a single "variable-like" name - so no spaces or UTF-8 (estonian chars are permitted) one can use `_` to separate the words (e.g. `my_operation`, `change_product_status`, `register_person`).
 It is, however, possible to use spaces if the name is quoted (i.e. surrounded with `"`).
 
-Arguments have similar restriction as the operation name.
-Note that you _may not_ supply the type of the argument, it must be resolveable from the contract (e.g. if it is compared with/changes value of, some column).
+Parameters have similar restriction as the operation name.
+Note that you _may not_ supply the type of the parameter, it must be resolveable from the contract (e.g. if it is compared with/changes value of, some column).
 
-Both arguments and operation name are passed through a "name sanitizer", which, amongst other things, changes estonian chars to english, changes spaces to underscores, and changes camel case notation to snake case.
+Both parameters and operation name are passed through a "name sanitizer", which, amongst other things, changes estonian chars to english, changes spaces to underscores, and changes camel case notation to snake case.
 
 Pre- and postconditions are described in their own sections below, here it is simply denoted where they should go, and that it's possible to have multiple definitions.
 In general, contracts operate on the notion of "variables" (or instances), where, instead of referring to the table (entity) the contract refers to a _named_ table/entity that has specific restrictions.
@@ -146,7 +146,7 @@ It is possible to have multiple postconditions with a return clause, in this cas
 `RETURN_VALUE` may be:
 
 - Literal: some literal like a number or a string.
-- Argument: some argument of the operation.
+- Parameter: some parameter of the operation.
 - Column: column belonging to the _target_ of the postcondition.
 - `_identifier`: special keyword that returns the [identifier](#identifier) of the postcondition's _target_.
 
@@ -179,7 +179,7 @@ DSL_COLUMN_NAME COMPARISON TARGET
 
 `COMPARISON` is some comparison symbol between the two entries, this includes: `=`, `<>`, `!=`, `>`, `>=`, `<`, `<=`, `in`, `not in`, `is` and `is not`.
 
-`TARGET` is some literal (or argument name) to compare against, in case there are multiple (e.g. for `in` and `not in`, these can be supplied within brackets like `(5, 'str', argument_name)`)
+`TARGET` is some literal (or parameter name) to compare against, in case there are multiple (e.g. for `in` and `not in`, these can be supplied within brackets like `(5, 'str', parameter)`)
 
 These `RESTRICTIONS` can be combined in a straighforward way using `AND`, `OR`, `!`, and `()`:
 
@@ -245,7 +245,7 @@ updated ALIAS
 };
 ```
 
-`DSL_COLUMN_NAME = TARGET` denotes a desired update, `DSL_COLUMN_NAME` refers to the [column](#table) of the table that the `ALIAS` belongs to, and a `TARGET` is some literal or argument name.
+`DSL_COLUMN_NAME = TARGET` denotes a desired update, `DSL_COLUMN_NAME` refers to the [column](#table) of the table that the `ALIAS` belongs to, and a `TARGET` is some literal or parameter name.
 `link with ALIAS` is used to link the two instances (as again, in analysis-level we do not have precise columns, but instead only relationships).
 `unlink from ALIAS` is used to unlink (i.e. set to `null`) the relevant column in the target table, note that this does _not_ imply `connection between` precondition, and it must be supplied separately if the _instances_ are actually supposed to be linked.
 

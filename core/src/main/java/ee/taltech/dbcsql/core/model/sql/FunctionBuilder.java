@@ -12,9 +12,9 @@ public class FunctionBuilder
 		return this;
 	}
 
-	public FunctionBuilder addArgument(String arg)
+	public FunctionBuilder addParameter(String param)
 	{
-		this.data.extendArgs(arg);
+		this.data.extendArgs(param);
 		return this;
 	}
 

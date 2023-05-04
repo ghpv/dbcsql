@@ -47,7 +47,7 @@ public class DeleteBadNamingInRestrictionTests extends UseCaseTest
 	protected void extraOperationsOnContext(GenerationContextSubBuilder contextBuilder)
 	{
 		contextBuilder.withFunctionPrefix("f");
-		contextBuilder.withArgumentPrefix("p");
+		contextBuilder.withParameterPrefix("p");
 	}
 
 	@Test

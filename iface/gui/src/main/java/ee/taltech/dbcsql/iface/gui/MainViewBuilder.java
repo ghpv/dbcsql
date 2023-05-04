@@ -35,7 +35,7 @@ public class MainViewBuilder
 	private TextArea outputView;
 	private CheckBox invoker = new CheckBox("Security Invoker");
 	private CheckBox implicitReturn = new CheckBox("Implicit return last");
-	private TextField argPrefix = new TextField();
+	private TextField paramPrefix = new TextField();
 	private TextField opPrefix = new TextField();
 	private MemoryPersistence memoryPersistence = new MemoryPersistence();
 
@@ -45,7 +45,7 @@ public class MainViewBuilder
 		this.contextView = makeContextView();
 		this.contractView = makeContractView();
 		this.outputView = makeOutputView();
-		this.argPrefix.setPromptText("Parameter name prefix");
+		this.paramPrefix.setPromptText("Parameter name prefix");
 		this.opPrefix.setPromptText("Function name prefix");
 		grid.addRow(
 			0,
@@ -71,7 +71,7 @@ public class MainViewBuilder
 			.getChildren()
 			.addAll(
 				opPrefix,
-				argPrefix,
+				paramPrefix,
 				invoker,
 				implicitReturn
 			);
@@ -140,7 +140,7 @@ public class MainViewBuilder
 							.withContextFromStream(streamFromString(contextView.getText()))
 							.withSecurityInvoker(invoker.isSelected())
 							.withReturnOnLastPostcondition(implicitReturn.isSelected())
-							.withArgumentPrefix(argPrefix.getText())
+							.withParameterPrefix(paramPrefix.getText())
 							.withFunctionPrefix(opPrefix.getText())
 						.build()
 						.withContractStream(streamFromString(contractView.getText()))

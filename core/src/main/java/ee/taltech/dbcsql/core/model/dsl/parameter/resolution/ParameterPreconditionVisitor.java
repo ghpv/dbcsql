@@ -1,15 +1,15 @@
-package ee.taltech.dbcsql.core.model.dsl.argument.resolution;
+package ee.taltech.dbcsql.core.model.dsl.parameter.resolution;
 
 import ee.taltech.dbcsql.core.model.dsl.pre.PreconditionVisitor;
 import ee.taltech.dbcsql.core.model.dsl.pre.connection.ConnectionPrecondition;
 import ee.taltech.dbcsql.core.model.dsl.pre.exists.ExistsPrecondition;
 import ee.taltech.dbcsql.core.model.dsl.restriction.Restriction;
 
-public class ArgumentPreconditionVisitor implements PreconditionVisitor<Void>
+public class ParameterPreconditionVisitor implements PreconditionVisitor<Void>
 {
-	private ArgumentResolver resolver;
+	private ParameterResolver resolver;
 
-	public ArgumentPreconditionVisitor(ArgumentResolver resolver)
+	public ParameterPreconditionVisitor(ParameterResolver resolver)
 	{
 		this.resolver = resolver;
 	}
@@ -17,7 +17,7 @@ public class ArgumentPreconditionVisitor implements PreconditionVisitor<Void>
 	@Override
 	public Void visit(ExistsPrecondition c)
 	{
-		ArgumentRestrictionVisitor visitor = new ArgumentRestrictionVisitor(this.resolver);
+		ParameterRestrictionVisitor visitor = new ParameterRestrictionVisitor(this.resolver);
 		for (Restriction r: c.getRestrictions().getRestrictions())
 		{
 			r.accept(visitor);

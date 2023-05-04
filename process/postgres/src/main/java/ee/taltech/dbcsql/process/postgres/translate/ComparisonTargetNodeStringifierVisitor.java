@@ -37,7 +37,7 @@ public class ComparisonTargetNodeStringifierVisitor implements ComparisonTargetN
 	@Override
 	public String visit(FunctionComparisonTargetNode v)
 	{
-		return v.getFunction() + this.joinSubnodes(v.getArguments(), ",");
+		return v.getFunction() + this.joinSubnodes(v.getParameters(), ",");
 	}
 
 	private String joinSubnodes(Collection<ComparisonTargetNode> nodes, String delimiter)

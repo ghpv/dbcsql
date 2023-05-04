@@ -31,7 +31,6 @@ import ee.taltech.dbcsql.core.model.dsl.variable.VariableRegistry;
 import ee.taltech.dbcsql.core.phase.GenerationContext;
 import ee.taltech.dbcsql.core.phase.TranslatorInputException;
 import ee.taltech.dbcsql.core.phase.input.ContractBaseListener;
-import ee.taltech.dbcsql.core.phase.input.ContractParser.ArgContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.CommentDeclContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.ConnectionPreconditionContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.ContractContext;
@@ -43,6 +42,7 @@ import ee.taltech.dbcsql.core.phase.input.ContractParser.IdListContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.InsertedPostconditionContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.LiteralOrVarContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.LiteralOrVarListContext;
+import ee.taltech.dbcsql.core.phase.input.ContractParser.ParamContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.PostconditionLinkContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.PostconditionUnlinkContext;
 import ee.taltech.dbcsql.core.phase.input.ContractParser.PostconditionValueContext;
@@ -63,9 +63,9 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 	private VariableDef currentRestrictionVariable;
 	private VariableRegistry varReg;
 	private DatabaseDef dbDef;
-	private NameMender argumentNameMender;
+	private NameMender parameterNameMender;
 	private NameMender functionNameMender;
-	private Set<String> seenArguments = new HashSet<>();
+	private Set<String> seenParameters = new HashSet<>();
 
 	private Stack<ExpressionNode> nodeStack = new Stack<>();
 	private ContractDefBuilderBase<ContractDefBuilder>.InsertedPostconditionSubBuilder inserted;
@@ -75,13 +75,13 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 	{
 		this.varReg = context.getVars();
 		this.dbDef = context.getDatabaseDef();
-		this.argumentNameMender = context.getArgumentMender();
+		this.parameterNameMender = context.getParameterMender();
 		this.functionNameMender = context.getFunctionMender();
 	}
 
-	private String fixArgumentName(String name)
+	private String fixParameterName(String name)
 	{
-		return this.argumentNameMender.mendName(name);
+		return this.parameterNameMender.mendName(name);
 	}
 	private String fixFunctionName(String name)
 	{
@@ -127,7 +127,7 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 
 	private ComparisonTargetNode processFunction(FunctionLiteralContext functionLiteral)
 	{
-		List<ComparisonTargetNode> args = functionLiteral
+		List<ComparisonTargetNode> params = functionLiteral
 			.literalOrVar()
 			.stream()
 			.map(x -> this.processLiteralOrVar(x))
@@ -135,7 +135,7 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 		;
 		return new FunctionComparisonTargetNodeBuilder()
 			.withFunction(functionLiteral.ID().getText())
-			.withArguments(args)
+			.withParameters(params)
 			.build()
 		;
 	}
@@ -147,9 +147,9 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 			return name.getText();
 		}
 
-		this.argumentNameMender.setVerifySQLKeywords(false);
-		String mendedName = this.argumentNameMender.mendName(name.symbol.getText());
-		this.argumentNameMender.setVerifySQLKeywords(true);
+		this.parameterNameMender.setVerifySQLKeywords(false);
+		String mendedName = this.parameterNameMender.mendName(name.symbol.getText());
+		this.parameterNameMender.setVerifySQLKeywords(true);
 		return mendedName;
 	}
 
@@ -166,16 +166,16 @@ public class ContractListener extends ContractBaseListener implements DSLListene
 	}
 
 	@Override
-	public void enterArg(ArgContext ctx)
+	public void enterParam(ParamContext ctx)
 	{
-		String argumentAlias = this.fixArgumentName(ctx.alias.getText());
-		if (!seenArguments.add(argumentAlias))
+		String parameterAlias = this.fixParameterName(ctx.alias.getText());
+		if (!seenParameters.add(parameterAlias))
 		{
-			throw new TranslatorInputException("Argument '" + argumentAlias + "' was already given!");
+			throw new TranslatorInputException("Parameter '" + parameterAlias + "' was already given!");
 		}
 		contract
-			.makeArgument()
-			.withAlias(argumentAlias)
+			.makeParameter()
+			.withAlias(parameterAlias)
 			.build();
 		;
 	}

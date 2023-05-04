@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import ee.taltech.dbcsql.core.model.dsl.argument.ArgumentDef;
-import ee.taltech.dbcsql.core.model.dsl.argument.resolution.ArgumentPostconditionVisitor;
-import ee.taltech.dbcsql.core.model.dsl.argument.resolution.ArgumentPreconditionVisitor;
-import ee.taltech.dbcsql.core.model.dsl.argument.resolution.ArgumentResolver;
+import ee.taltech.dbcsql.core.model.dsl.parameter.ParameterDef;
+import ee.taltech.dbcsql.core.model.dsl.parameter.resolution.ParameterPostconditionVisitor;
+import ee.taltech.dbcsql.core.model.dsl.parameter.resolution.ParameterPreconditionVisitor;
+import ee.taltech.dbcsql.core.model.dsl.parameter.resolution.ParameterResolver;
 import ee.taltech.dbcsql.core.model.dsl.post.PostconditionDef;
 import ee.taltech.dbcsql.core.model.dsl.pre.PreconditionDef;
 import ee.taltech.dbcsql.core.phase.TranslatorInputException;
@@ -17,7 +17,7 @@ import ee.taltech.dbcsql.core.phase.TranslatorInputException;
 public class ContractDef
 {
 	private String name = "";
-	private List<ArgumentDef> arguments = new LinkedList<>();
+	private List<ParameterDef> parameters = new LinkedList<>();
 	private List<PreconditionDef> preconditions = new LinkedList<>();
 	private List<PostconditionDef> postconditions = new LinkedList<>();
 	private Optional<String> comment = Optional.empty();
@@ -28,12 +28,12 @@ public class ContractDef
 
 	public ContractDef(
 		String name,
-		List<ArgumentDef> arguments,
+		List<ParameterDef> parameters,
 		List<PreconditionDef> preconditions,
 		List<PostconditionDef> postconditions
 	) {
 		this.setName(name);
-		this.setArguments(arguments);
+		this.setParameters(parameters);
 		this.setPreconditions(preconditions);
 		this.setPostconditions(postconditions);
 	}
@@ -43,14 +43,14 @@ public class ContractDef
 		this.name = name;
 	}
 
-	public void setArguments(Collection<ArgumentDef> arguments)
+	public void setParameters(Collection<ParameterDef> parameters)
 	{
-		arguments.forEach(x -> this.addArgument(x));
+		parameters.forEach(x -> this.addParameter(x));
 	}
 
-	public void addArgument(ArgumentDef argument)
+	public void addParameter(ParameterDef parameter)
 	{
-		this.arguments.add(argument);
+		this.parameters.add(parameter);
 	}
 
 	public void setPreconditions(List<PreconditionDef> preconditions)
@@ -77,9 +77,9 @@ public class ContractDef
 	{
 		return name;
 	}
-	public List<ArgumentDef> getArguments()
+	public List<ParameterDef> getParameters()
 	{
-		return arguments;
+		return parameters;
 	}
 	public List<PreconditionDef> getPreconditions()
 	{
@@ -90,29 +90,29 @@ public class ContractDef
 		return postconditions;
 	}
 
-	public void resolveArgumentTypes()
+	public void resolveParameterTypes()
 	{
-		ArgumentResolver argRes = new ArgumentResolver();
-		for (ArgumentDef arg: this.arguments)
+		ParameterResolver paramRes = new ParameterResolver();
+		for (ParameterDef param: this.parameters)
 		{
-			argRes.addArgumentReference(arg);
+			paramRes.addParameterReference(param);
 		}
 
-		ArgumentPreconditionVisitor preconditionVisitor = new ArgumentPreconditionVisitor(argRes);
+		ParameterPreconditionVisitor preconditionVisitor = new ParameterPreconditionVisitor(paramRes);
 		for (PreconditionDef precond: this.preconditions)
 		{
 			precond.accept(preconditionVisitor);
 		}
 
-		ArgumentPostconditionVisitor postconditionVisitor = new ArgumentPostconditionVisitor(argRes);
+		ParameterPostconditionVisitor postconditionVisitor = new ParameterPostconditionVisitor(paramRes);
 		for (PostconditionDef precond: this.postconditions)
 		{
 			precond.accept(postconditionVisitor);
 		}
 
-		if (!argRes.isComplete())
+		if (!paramRes.isComplete())
 		{
-			throw new TranslatorInputException("Argument type could not be resolved for: " + argRes.getUnresolvedArguments());
+			throw new TranslatorInputException("Parameter type could not be resolved for: " + paramRes.getUnresolvedParameters());
 		}
 	}
 
@@ -141,7 +141,7 @@ public class ContractDef
 		ContractDef other = (ContractDef) obj;
 		return true
 			&& this.name.equals(other.name)
-			&& this.arguments.equals(other.arguments)
+			&& this.parameters.equals(other.parameters)
 			&& this.preconditions.equals(other.preconditions)
 			&& this.postconditions.equals(other.postconditions)
 		;
@@ -152,7 +152,7 @@ public class ContractDef
 	{
 		return Objects.hash(
 			this.name,
-			this.arguments,
+			this.parameters,
 			this.preconditions,
 			this.postconditions
 		);
@@ -163,8 +163,8 @@ public class ContractDef
 	{
 		return new StringBuilder("operation ")
 			.append(name)
-			.append("; args =")
-			.append(arguments)
+			.append("; params =")
+			.append(parameters)
 			.append("; preco =")
 			.append(this.preconditions)
 			.append("; postco = ")

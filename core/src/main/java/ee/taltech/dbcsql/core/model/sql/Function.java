@@ -10,7 +10,7 @@ import ee.taltech.dbcsql.core.model.sql.uvalues.UniqueValues;
 public class Function
 {
 	private String name;
-	private List<String> args = new LinkedList<>();
+	private List<String> params = new LinkedList<>();
 	private List<Statement> statements = new LinkedList<>();
 	private String returnType = "VOID";
 	private UniqueValues searchSpace = new UniqueValues();
@@ -20,10 +20,10 @@ public class Function
 	public Function()
 	{
 	}
-	public Function(String name, Collection<String> args, Collection<Statement> statements)
+	public Function(String name, Collection<String> params, Collection<Statement> statements)
 	{
 		this.setName(name);
-		this.extendArgs(args);
+		this.extendArgs(params);
 		this.extendStatements(statements);
 	}
 
@@ -37,21 +37,21 @@ public class Function
 		this.name = name;
 	}
 
-	public List<String> getArgs()
+	public List<String> getParams()
 	{
-		return args;
+		return params;
 	}
 
-	public void extendArgs(Collection<String> args)
+	public void extendArgs(Collection<String> params)
 	{
-		args
+		params
 			.stream()
 			.forEach(x -> this.extendArgs(x))
 		;
 	}
-	public void extendArgs(String arg)
+	public void extendArgs(String param)
 	{
-		this.args.add(arg);
+		this.params.add(param);
 	}
 
 	public List<Statement> getStatements()
@@ -66,9 +66,9 @@ public class Function
 			.forEach(x -> this.extendStatements(x))
 		;
 	}
-	public void extendStatements(Statement arg)
+	public void extendStatements(Statement stmt)
 	{
-		this.statements.add(arg);
+		this.statements.add(stmt);
 	}
 
 	public String getReturnType()
@@ -125,7 +125,7 @@ public class Function
 		Function other = (Function) obj;
 		return true
 			&& this.name.equals(other.name)
-			&& this.args.equals(other.args)
+			&& this.params.equals(other.params)
 			&& this.statements.equals(other.statements)
 		;
 	}
@@ -135,7 +135,7 @@ public class Function
 	{
 		return Objects.hash(
 			this.name,
-			this.args,
+			this.params,
 			this.statements
 		);
 	}
@@ -146,8 +146,8 @@ public class Function
 		return new StringBuilder()
 			.append("function ")
 			.append(this.name)
-			.append(" args = ")
-			.append(this.args)
+			.append(" params = ")
+			.append(this.params)
 			.append(" statements = ")
 			.append(this.statements)
 			.toString()
