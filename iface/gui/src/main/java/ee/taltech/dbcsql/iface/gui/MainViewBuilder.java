@@ -1,7 +1,11 @@
 package ee.taltech.dbcsql.iface.gui;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 
 import ee.taltech.dbcsql.core.phase.GenerationRequest;
 import ee.taltech.dbcsql.core.phase.TranslatorInputException;
@@ -38,6 +42,8 @@ public class MainViewBuilder
 	private TextField paramPrefix = new TextField();
 	private TextField opPrefix = new TextField();
 	private MemoryPersistence memoryPersistence = new MemoryPersistence();
+	private static final String EXAMPLE_CONTEXT = "example_context.dsl";
+	private static final String EXAMPLE_CONTRACT = "example_contract.dsl";
 
 	public MainViewBuilder()
 	{
@@ -100,7 +106,7 @@ public class MainViewBuilder
 	private TextArea makeContextView()
 	{
 		TextArea contextView = new TextArea();
-		contextView.setText("table test\n{\n\tid INTEGER;\n};\nidentifier for test is id;");
+		contextView.setText(getResourceFileAsString(EXAMPLE_CONTEXT));
 		contextView.setPromptText("// Context goes here");
 		return contextView;
 	}
@@ -108,7 +114,7 @@ public class MainViewBuilder
 	private TextArea makeContractView()
 	{
 		TextArea contractView = new TextArea();
-		contractView.setText("operation add_test\n{\n\tp_id;\n}\npreconditions\n{\n}\npostconditions\n{\n\tinserted test a\n\t{\n\t\tid = p_id;\n\t};\n}");
+		contractView.setText(getResourceFileAsString(EXAMPLE_CONTRACT));
 		contractView.setPromptText("// Contract goes here");
 		return contractView;
 	}
@@ -169,8 +175,37 @@ public class MainViewBuilder
 		return new ByteArrayInputStream(str.getBytes());
 	}
 
+	private static String getResourceFileAsString(String fileName)
+	{
+		try
+		{
+			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+			try (InputStream is = classLoader.getResourceAsStream(fileName))
+			{
+				if (is == null)
+				{
+					return null;
+				}
+				try
+					(
+						InputStreamReader isr = new InputStreamReader(is);
+						BufferedReader reader = new BufferedReader(isr)
+					) {
+						return reader
+							.lines()
+							.collect(Collectors.joining(System.lineSeparator()));
+					}
+			}
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+
 	public Scene build()
 	{
 		return mainScene;
 	}
+
 }
